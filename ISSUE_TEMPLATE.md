@@ -7,7 +7,7 @@
 
   - Briefly explain the feature you would like us to implement
   - What are the current issues this feature will solve
-  - Is this feature cross compatible with other ethereum networks
+  - Is this feature cross compatible with other vapory networks
   - Are you willing to help us with development support if required
 
 - **Bug Report**

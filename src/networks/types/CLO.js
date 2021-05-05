@@ -1,7 +1,7 @@
 import tokens from '@/tokens/tokens-clo.json';
 import contracts from '@/contracts/contract-abi-clo.json';
 import clo from '@/assets/images/networks/clo.svg';
-// import { EthAbi } from '../ensAbis';
+// import { VapAbi } from '../vnsAbis';
 
 export default {
   name: 'CLO',
@@ -12,7 +12,7 @@ export default {
   chainID: 820,
   tokens: tokens,
   contracts: contracts,
-  ensResolver: '',
-  ensAbi: '',
+  vnsResolver: '',
+  vnsAbi: '',
   icon: clo
 };

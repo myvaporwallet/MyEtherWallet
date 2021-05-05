@@ -1,8 +1,8 @@
-import { ETH } from '../types';
+import { VAP } from '../types';
 export default {
-  type: ETH,
-  service: 'etherscan.io',
-  url: 'https://api.etherscan.io/api',
+  type: VAP,
+  service: 'vaporscan.com',
+  url: 'https://api.vaporscan.com/api',
   port: 443,
   auth: false,
   username: '',

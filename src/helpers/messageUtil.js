@@ -1,4 +1,4 @@
-import web3 from 'web3';
+import web3 from '@vapory/web3';
 const secp256k1 = require('secp256k1');
 const assert = require('assert');
 const createKeccakHash = require('keccak');
@@ -93,7 +93,7 @@ function sha3(a, bits) {
 
 function hashPersonalMessage(message) {
   const prefix = toBuffer(
-    '\x19Ethereum Signed Message:\n' + message.length.toString()
+    '\x19Vapory Signed Message:\n' + message.length.toString()
   );
   return sha3(Buffer.concat([prefix, message]));
 }
@@ -133,7 +133,7 @@ function getTrezorLenBuf(msgLen) {
 function getTrezorHash(msg) {
   return sha3(
     Buffer.concat([
-      toBuffer('\u0019Ethereum Signed Message:\n'),
+      toBuffer('\u0019Vapory Signed Message:\n'),
       getTrezorLenBuf(msg.length),
       toBuffer(msg)
     ])

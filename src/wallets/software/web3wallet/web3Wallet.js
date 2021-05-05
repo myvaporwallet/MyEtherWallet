@@ -1,4 +1,4 @@
-import Web3 from 'web3';
+import Web3 from '@vapory/web3';
 const web3 = window.web3 ? new Web3(window.web3.currentProvider) : {};
 
 export default class Web3Wallet {
@@ -22,7 +22,7 @@ export default class Web3Wallet {
 
   _signMessage(message) {
     const address = this.address;
-    const promise = web3.eth.personal.sign(message, address);
+    const promise = web3.vap.personal.sign(message, address);
     return new Promise(function(resolve) {
       resolve(promise);
     });
@@ -33,7 +33,7 @@ export default class Web3Wallet {
     raw['from'] = this.address;
 
     return new Promise(function(resolve, reject) {
-      web3.eth.sendTransaction(raw, function(err, res) {
+      web3.vap.sendTransaction(raw, function(err, res) {
         if (err) {
           reject(err);
         }

@@ -61,7 +61,7 @@ export default {
   data() {
     return {
       selectedLeft: 'wei',
-      selectedRight: 'ether',
+      selectedRight: 'vapor',
       valueLeft: 1000000000000000000,
       valueRight: 1
     };
@@ -99,7 +99,7 @@ export default {
   methods: {
     getValueOfUnit(unit) {
       const utils = this.$store.state.web3.utils;
-      unit = unit ? unit.toLowerCase() : 'ether';
+      unit = unit ? unit.toLowerCase() : 'vapor';
       const unitValue = utils.unitMap[unit];
       return new BigNumber(unitValue, 10);
     },

@@ -4,7 +4,7 @@
     <h5>Getting Started</h5>
     <ol>
       <li>
-        Go to the <a href="https://www.myetherwallet.com/#contracts">Contract tab on MyEtherWallet.com</a>.
+        Go to the <a href="https://www.myvaporwallet.com/#contracts">Contract tab on MyVaporWallet.com</a>.
       </li>
       <li>
         There should be a Mist Multisig Contract ABI in the dropdown.
@@ -37,14 +37,14 @@
           <li>
             In step 3, you opened the TX ID from the
             <abbr>EXECUTE</abbr>call. You should have a page like this open:
-            <a href="https://etherscan.io/tx/0x0c643a1ae66637217f24791df05071c7849941a1231cf9fa2a0daf145da833e3">
-              https://etherscan.io/tx/0x0c643a1ae66637217f24791df05071c7849941a1231cf9fa2a0daf145da833e3
+            <a href="https://vaporscan.com/tx/0x0c643a1ae66637217f24791df05071c7849941a1231cf9fa2a0daf145da833e3">
+              https://vaporscan.com/tx/0x0c643a1ae66637217f24791df05071c7849941a1231cf9fa2a0daf145da833e3
             </a>
           </li>
           <li>Click the <abbr>Event Logs</abbr>tab.</li>
           <li>
             On the above link (
-            <a href="https://etherscan.io/tx/0x47e4cc8748e296d9b5d85ebd9bd705177bb1940517b084a2efcca11feeb2391d#eventlog">https://etherscan.io/tx/0x47e4cc87...#eventlog</a>
+            <a href="https://vaporscan.com/tx/0x47e4cc8748e296d9b5d85ebd9bd705177bb1940517b084a2efcca11feeb2391d#eventlog">https://vaporscan.com/tx/0x47e4cc87...#eventlog</a>
             - not YOUR link), the <abbr>_h</abbr> field would be
             <abbr>9228aeaf3ed560274899483646ea4ce9b322bccffac60cac2d035d08752617f4</abbr>
           </li>
@@ -53,7 +53,7 @@
             Look at your link and see what YOUR <abbr>_h</abbr> is. Copy it.
           </li>
           <li>
-            Go back to MyEtherWallet where you have the CONFIRM open and paste that hash into the
+            Go back to MyVaporWallet where you have the CONFIRM open and paste that hash into the
             <abbr>_h</abbr> field.
           </li>
           <li>Click the <abbr>"WRITE"</abbr> button again and unlock the second owner's account.</li>
@@ -68,22 +68,22 @@
       </li>
       <li>
         See another approval for my previous example here:
-        <a href="https://etherscan.io/tx/0x47e4cc8748e296d9b5d85ebd9bd705177bb1940517b084a2efcca11feeb2391d#eventlog">
-          https://etherscan.io/tx/0x47e4cc8748e296d9b5d85ebd9bd705177bb1940517b084a2efcca11feeb2391d#eventlog
+        <a href="https://vaporscan.com/tx/0x47e4cc8748e296d9b5d85ebd9bd705177bb1940517b084a2efcca11feeb2391d#eventlog">
+          https://vaporscan.com/tx/0x47e4cc8748e296d9b5d85ebd9bd705177bb1940517b084a2efcca11feeb2391d#eventlog
         </a>
       </li>
-      <li>You can then repeat this process whenever you want to send ETH.</li>
+      <li>You can then repeat this process whenever you want to send VAP.</li>
     </ol>
 
-    <h5>Mist / Ethereum Wallet's Multisig Contract ABI</h5>
+    <h5>Mist / Vapory Wallet's Multisig Contract ABI</h5>
     <p class="codes">
       [{"constant":false,"inputs":[{"name":"_owner","type":"address"}],"name":"removeOwner","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_addr","type":"address"}],"name":"isOwner","outputs":[{"name":","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"m_numOwners","outputs":[{"name":","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"m_lastDay","outputs":[{"name":","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"version","outputs":[{"name":","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[],"name":"resetSpentToday","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"m_spentToday","outputs":[{"name":","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_owner","type":"address"}],"name":"addOwner","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"m_required","outputs":[{"name":","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_h","type":"bytes32"}],"name":"confirm","outputs":[{"name":","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"_newLimit","type":"uint256"}],"name":"setDailyLimit","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_data","type":"bytes"}],"name":"execute","outputs":[{"name":"_r","type":"bytes32"}],"type":"function"},{"constant":false,"inputs":[{"name":"_operation","type":"bytes32"}],"name":"revoke","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_newRequired","type":"uint256"}],"name":"changeRequirement","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"_operation","type":"bytes32"},{"name":"_owner","type":"address"}],"name":"hasConfirmed","outputs":[{"name":","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"}],"name":"kill","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"}],"name":"changeOwner","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"m_dailyLimit","outputs":[{"name":","type":"uint256"}],"type":"function"},{"inputs":[{"name":"_owners","type":"address[]"},{"name":"_required","type":"uint256"},{"name":"_daylimit","type":"uint256"}],"type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"operation","type":"bytes32"}],"name":"Confirmation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"operation","type":"bytes32"}],"name":"Revoke","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldOwner","type":"address"},{"indexed":false,"name":"newOwner","type":"address"}],"name":"OwnerChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"newOwner","type":"address"}],"name":"OwnerAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldOwner","type":"address"}],"name":"OwnerRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"newRequirement","type":"uint256"}],"name":"RequirementChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"from","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Deposit","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"value","type":"uint256"},{"indexed":false,"name":"to","type":"address"},{"indexed":false,"name":"data","type":"bytes"}],"name":"SingleTransact","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"operation","type":"bytes32"},{"indexed":false,"name":"value","type":"uint256"},{"indexed":false,"name":"to","type":"address"},{"indexed":false,"name":"data","type":"bytes"}],"name":"MultiTransact","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"operation","type":"bytes32"},{"indexed":false,"name":"initiator","type":"address"},{"indexed":false,"name":"value","type":"uint256"},{"indexed":false,"name":"to","type":"address"},{"indexed":false,"name":"data","type":"bytes"}],"name":"ConfirmationNeeded","type":"event"}]
     </p>
 
     <h5>You can also copy the above from here:</h5>
     <p>
-      <a href="https://www.reddit.com/r/ethereum/comments/5nev1a/help_needed_how_to_find_multisig_contract_wallet/">
-        https://www.reddit.com/r/ethereum/comments/5nev1a/help_needed_how_to_find_multisig_contract_wallet/
+      <a href="https://www.reddit.com/r/vapory/comments/5nev1a/help_needed_how_to_find_multisig_contract_wallet/">
+        https://www.reddit.com/r/vapory/comments/5nev1a/help_needed_how_to_find_multisig_contract_wallet/
       </a>
     </p>
 

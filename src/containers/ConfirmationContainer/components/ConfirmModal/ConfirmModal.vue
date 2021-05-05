@@ -49,7 +49,7 @@
               <p>Network</p><p>{{ $store.state.network.type.name }} by {{ $store.state.network.service }}</p>
             </div>
             <!-- <div class="grid-block">
-              <p>Value</p><p>{{ unit.fromWei(value,'ether') }} eth</p>
+              <p>Value</p><p>{{ unit.fromWei(value,'vapor') }} vap</p>
             </div> -->
             <div class="grid-block">
               <p>Gas Limit</p><p>{{ gas }} wei</p>
@@ -58,7 +58,7 @@
               <p>Gas Price</p><p>{{ gasPrice }} gwei</p>
             </div>
             <div class="grid-block">
-              <p>Transaction Fee</p><p> {{ fee }} ETH</p>
+              <p>Transaction Fee</p><p> {{ fee }} VAP</p>
             </div>
             <div class="grid-block">
               <p>Nonce</p><p>{{ nonce }}</p>
@@ -110,7 +110,7 @@
 
 <script>
 import AddressBlock from '../AddressBlock';
-import * as unit from 'ethjs-unit';
+import * as unit from 'vapjs-unit';
 import BigNumber from 'bignumber.js';
 
 export default {
@@ -218,11 +218,11 @@ export default {
         stateMutability: 'nonpayable',
         type: 'function'
       };
-      const transferFuncSig = web3.eth.abi.encodeFunctionSignature(
+      const transferFuncSig = web3.vap.abi.encodeFunctionSignature(
         jsonInterface
       );
       if (data.substr(0, 10) === transferFuncSig) {
-        const params = web3.eth.abi.decodeParameters(
+        const params = web3.vap.abi.decodeParameters(
           ['address', 'uint256'],
           `${data.substr(10)}`
         );

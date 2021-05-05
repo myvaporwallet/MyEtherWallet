@@ -21,7 +21,7 @@
       ref="networkandaddressModal"
       :hardware-wallet="hardwareWallet"/>
 
-    <metamask-modal ref="metamaskModal"/>
+    <vapormask-modal ref="vapormaskModal"/>
 
     <software-modal
       ref="softwareModal"
@@ -81,7 +81,7 @@
 import AccessWalletButton from '../../components/AccessWalletButton';
 import HardwareModal from '../../components/HardwareModal';
 import HardwarePasswordModal from '../../components/HardwarePasswordModal';
-import MetamaskModal from '../../components/MetamaskModal';
+import VapormaskModal from '../../components/VapormaskModal';
 import MewConnectModal from '../../components/MewConnectModal';
 import NetworkAndAddressModal from '../../components/NetworkAndAddressModal';
 import PasswordModal from '../../components/PasswordModal';
@@ -92,12 +92,12 @@ import MnemonicModal from '../../components/MnemonicModal';
 
 import mewConnectImg from '@/assets/images/icons/button-mewconnect.svg';
 import hardwareImg from '@/assets/images/icons/button-hardware.svg';
-import metamaskImg from '@/assets/images/icons/button-metamask.svg';
+import vapormaskImg from '@/assets/images/icons/button-vapormask.svg';
 import softwareImg from '@/assets/images/icons/button-software.svg';
 
 import mewConnectDisabledImg from '@/assets/images/icons/mewconnect-disable.svg';
 import hardwareDisabledImg from '@/assets/images/icons/hardware-disable.svg';
-import metamaskDisabledImg from '@/assets/images/icons/metamask-disable.svg';
+import vapormaskDisabledImg from '@/assets/images/icons/vapormask-disable.svg';
 
 export default {
   components: {
@@ -105,7 +105,7 @@ export default {
     'network-and-address-modal': NetworkAndAddressModal,
     'hardware-modal': HardwareModal,
     'hardware-password-modal': HardwarePasswordModal,
-    'metamask-modal': MetamaskModal,
+    'vapormask-modal': VapormaskModal,
     'software-modal': SoftwareModal,
     'password-modal': PasswordModal,
     'private-key-modal': PrivateKeyModal,
@@ -141,12 +141,12 @@ export default {
           disabled: this.$store.state.online
         },
         {
-          func: this.metamaskModalOpen,
-          title: 'MetaMask',
-          desc: this.$t('accessWallet.metaMaskDesc'),
+          func: this.vapormaskModalOpen,
+          title: 'VaporMask',
+          desc: this.$t('accessWallet.vaporMaskDesc'),
           recommend: '',
           tooltip: this.$t('common.toolTip3'),
-          img: this.$store.state.online ? metamaskImg : metamaskDisabledImg,
+          img: this.$store.state.online ? vapormaskImg : vapormaskDisabledImg,
           disabled: this.$store.state.online
         },
         {
@@ -171,8 +171,8 @@ export default {
     hardwareModalOpen() {
       this.$refs.hardwareModal.$refs.hardware.show();
     },
-    metamaskModalOpen() {
-      this.$refs.metamaskModal.$refs.metamask.show();
+    vapormaskModalOpen() {
+      this.$refs.vapormaskModal.$refs.vapormask.show();
     },
     softwareModalOpen() {
       this.$refs.softwareModal.$refs.software.show();
@@ -184,8 +184,8 @@ export default {
       this.$refs.softwareModal.$refs.software.hide();
       this.$refs.privatekeyModal.$refs.privateKey.show();
     },
-    installMetamaskModalOpen() {
-      this.$refs.installMetamaskModal.$refs.installmetamask.show();
+    installVapormaskModalOpen() {
+      this.$refs.installVapormaskModal.$refs.installvapormask.show();
     },
     mnemonicphraseModalOpen() {
       this.$refs.mnemonicPhraseModal.$refs.mnemonicPhrase.show();

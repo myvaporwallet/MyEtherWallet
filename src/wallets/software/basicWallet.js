@@ -1,7 +1,7 @@
-import * as utils from 'web3-utils';
-import * as ethUtil from 'ethereumjs-util';
-import EthereumTx from 'ethereumjs-tx';
-import EthereumWallet from 'ethereumjs-wallet';
+import * as utils from '@vapory/web3-utils';
+import * as vapUtil from 'vaporyjs-util';
+import VaporyTx from 'vaporyjs-tx';
+import VaporyWallet from 'vaporyjs-wallet';
 
 import * as crypto from 'crypto';
 
@@ -24,7 +24,7 @@ export default class BasicWallet {
     return new BasicWallet(options);
   }
 
-  // ============== (Start) EthereumJs-wallet interface methods ======================
+  // ============== (Start) VaporyJs-wallet interface methods ======================
   getPrivateKey() {
     return this.wallet.getPrivateKey();
   }
@@ -47,14 +47,14 @@ export default class BasicWallet {
 
   getAddressString() {
     const rawAddress = '0x' + this.getAddress().toString('hex');
-    return ethUtil.toChecksumAddress(rawAddress);
+    return vapUtil.toChecksumAddress(rawAddress);
   }
 
   getChecksumAddressString() {
     return this.wallet.getChecksumAddressString();
   }
 
-  // ============== (End) EthereumJs-wallet interface methods ======================
+  // ============== (End) VaporyJs-wallet interface methods ======================
 
   get privateKey() {
     return this.wallet.getPrivateKeyString();
@@ -99,7 +99,7 @@ export default class BasicWallet {
           );
         txData.data = txData.data === '' ? '0x' : txData.data;
         txData.data = txData.data === '' ? '0x' : txData.data;
-        const eTx = new EthereumTx(txData);
+        const eTx = new VaporyTx(txData);
         eTx.sign(this.privateKeyBuffer);
         txData.rawTx = JSON.stringify(txData);
         const serializedTx = eTx.serialize();
@@ -130,8 +130,8 @@ export default class BasicWallet {
             'no wallet present. wallet may not have been decrypted'
           );
         const thisMessage = message.data ? message.data : message;
-        const hash = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage));
-        const signed = ethUtil.ecsign(hash, this.wallet.privKey);
+        const hash = vapUtil.hashPersonalMessage(vapUtil.toBuffer(thisMessage));
+        const signed = vapUtil.ecsign(hash, this.wallet.privKey);
         const combined = Buffer.concat([
           Buffer.from(signed.r),
           Buffer.from(signed.s),
@@ -155,7 +155,7 @@ export default class BasicWallet {
     }
     if (params.length === 2) {
       return {
-        type: 'fromMyEtherWalletKey',
+        type: 'fromMyVaporWalletKey',
         manualPrivateKey: params[0],
         privPassword: params[1]
       };
@@ -182,9 +182,9 @@ export default class BasicWallet {
         options = this.detectWallet(options);
       }
       switch (options.type) {
-        case 'fromMyEtherWalletKey': {
+        case 'fromMyVaporWalletKey': {
           // TODO: STILL NEEDS TESTS
-          this.wallet = this.fromMyEtherWalletKey(
+          this.wallet = this.fromMyVaporWalletKey(
             options.manualPrivateKey,
             options.privPassword
           );
@@ -204,7 +204,7 @@ export default class BasicWallet {
             throw Error(
               'BasicWallet decryptWallet manualPrivateKey: Invalid Hex'
             );
-          } else if (!ethUtil.isValidPrivate(ethUtil.toBuffer(privKey))) {
+          } else if (!vapUtil.isValidPrivate(vapUtil.toBuffer(privKey))) {
             this.wallet = null;
             throw Error(
               'BasicWallet decryptWallet manualPrivateKey: Invalid Private Key'
@@ -244,7 +244,7 @@ export default class BasicWallet {
 
   static generateWallet() {
     // eslint-disable-next-line new-cap
-    const tempWallet = new EthereumWallet.generate();
+    const tempWallet = new VaporyWallet.generate();
     const privKey = tempWallet.getPrivateKeyString();
 
     return new BasicWallet({
@@ -258,7 +258,7 @@ export default class BasicWallet {
     let privateKey;
     if (typeof priv !== 'undefined') {
       privateKey = priv.length === 32 ? priv : Buffer.from(priv, 'hex');
-      wallet = EthereumWallet.fromPrivateKey(privateKey);
+      wallet = VaporyWallet.fromPrivateKey(privateKey);
     }
 
     wallet.path = path;
@@ -285,19 +285,19 @@ export default class BasicWallet {
     }
     // eslint-disable-next-line new-cap
     if (jsonArr.encseed != null)
-      return new EthereumWallet.fromEthSale(strjson, password);
+      return new VaporyWallet.fromVapSale(strjson, password);
     // eslint-disable-next-line new-cap
     else if (jsonArr.Crypto != null || jsonArr.crypto != null)
-      return new EthereumWallet.fromV3(strjson, password, true);
+      return new VaporyWallet.fromV3(strjson, password, true);
     else if (jsonArr.hash != null)
-      return this.fromMyEtherWallet(strjson, password);
-    else if (jsonArr.publisher === 'MyEtherWallet')
-      return this.fromMyEtherWalletV2(strjson);
+      return this.fromMyVaporWallet(strjson, password);
+    else if (jsonArr.publisher === 'MyVaporWallet')
+      return this.fromMyVaporWalletV2(strjson);
 
     throw Error('Error decoding wallet from file');
   }
 
-  fromMyEtherWalletKey(input, password) {
+  fromMyVaporWalletKey(input, password) {
     let cipher = input.slice(0, 128);
     cipher = this.decodeCryptojsSalt(cipher);
     const evp = this.evp_kdf(Buffer.from(password), cipher.salt, {
@@ -310,7 +310,7 @@ export default class BasicWallet {
     return BasicWallet.createWallet(privKey);
   }
 
-  fromMyEtherWallet(input, password) {
+  fromMyVaporWallet(input, password) {
     const json = typeof input === 'object' ? input : JSON.parse(input);
     let privKey;
     if (!json.locked) {
@@ -331,7 +331,7 @@ export default class BasicWallet {
         keysize: 32,
         ivsize: 16
       });
-      const decipher = ethUtil.crypto.createDecipheriv(
+      const decipher = vapUtil.crypto.createDecipheriv(
         'aes-256-cbc',
         evp.key,
         evp.iv
@@ -346,7 +346,7 @@ export default class BasicWallet {
     return wallet;
   }
 
-  fromMyEtherWalletV2(input) {
+  fromMyVaporWalletV2(input) {
     const json = typeof input === 'object' ? input : JSON.parse(input);
     if (json.privKey.length !== 64) {
       throw new Error('Invalid private key length');
@@ -357,10 +357,10 @@ export default class BasicWallet {
   }
 
   fromParityPhrase(phrase) {
-    let hash = ethUtil.sha3(Buffer.from(phrase));
-    for (let i = 0; i < 16384; i++) hash = ethUtil.sha3(hash);
+    let hash = vapUtil.sha3(Buffer.from(phrase));
+    for (let i = 0; i < 16384; i++) hash = vapUtil.sha3(hash);
     // eslint-disable-next-line eqeqeq
-    while (ethUtil.privateToAddress(hash)[0] != 0) hash = ethUtil.sha3(hash);
+    while (vapUtil.privateToAddress(hash)[0] != 0) hash = vapUtil.sha3(hash);
     return BasicWallet.createWallet(hash);
   }
 

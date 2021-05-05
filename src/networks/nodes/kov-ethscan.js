@@ -1,8 +1,8 @@
 import { KOV } from '../types';
 export default {
   type: KOV,
-  service: 'etherscan.io',
-  url: 'https://kovan.etherscan.io/api',
+  service: 'vaporscan.com',
+  url: 'https://kovan.vaporscan.com/api',
   port: 443,
   auth: false,
   username: '',

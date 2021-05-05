@@ -73,7 +73,7 @@
               class="custom-input-text-1"
               type="text"
               name=""
-              placeholder="ETH Node Name"
+              placeholder="VAP Node Name"
               autocomplete="off">
             <select
               v-model="selectedNetwork"
@@ -106,7 +106,7 @@
               class="custom-input-text-1"
               type="number"
               name=""
-              placeholder="https://etherscan.io/tx/"
+              placeholder="https://vaporscan.com/tx/"
               autocomplete="off">
             <input
               v-show="selectedNetwork.name === 'CUS'"
@@ -122,7 +122,7 @@
               class="custom-input-text-1"
               type="number"
               name=""
-              placeholder="https://etherscan.io/address/"
+              placeholder="https://vaporscan.com/address/"
               autocomplete="off">
           </div>
         </div>
@@ -193,7 +193,7 @@ export default {
   data() {
     return {
       types: networkTypes,
-      selectedNetwork: networkTypes.ETH,
+      selectedNetwork: networkTypes.VAP,
       chainID: '',
       port: '',
       name: '',
@@ -224,7 +224,7 @@ export default {
       chainID: '',
       tokens: [],
       contracts: [],
-      ensResolver: ''
+      vnsResolver: ''
     };
   },
   methods: {
@@ -237,7 +237,7 @@ export default {
         if (this.customNetworks.length > 0) {
           this.switchNetwork(this.customNetworks[0]);
         } else {
-          this.switchNetwork(this.$store.state.Networks.ETH[0]);
+          this.switchNetwork(this.$store.state.Networks.VAP[0]);
         }
       }
       store.set('customNetworks', this.customNetworks);
@@ -248,7 +248,7 @@ export default {
       this.$refs.networkAdd.classList.toggle('hidden');
     },
     resetCompState() {
-      this.selectedNetwork = { name: 'ETH', name_long: 'Ethereum' };
+      this.selectedNetwork = { name: 'VAP', name_long: 'Vapory' };
       this.chainID = '';
       this.port = '';
       this.name = '';

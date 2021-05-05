@@ -1,4 +1,4 @@
-import * as ethUtil from 'ethereumjs-util';
+import * as vapUtil from 'vaporyjs-util';
 
 export default class Web3WalletAdapter {
   constructor(wallet) {
@@ -12,7 +12,7 @@ export default class Web3WalletAdapter {
     this.signMessage = this._signMessage.bind(this);
   }
 
-  // ============== (Start) EthereumJs-wallet interface methods ======================
+  // ============== (Start) VaporyJs-wallet interface methods ======================
   getPrivateKey() {
     if (this.privateKeyAvailable()) {
       return this.wallet.getPrivateKey();
@@ -49,16 +49,16 @@ export default class Web3WalletAdapter {
     const address = this.wallet.getAddress();
     if (typeof address !== 'string') {
       const rawAddress = '0x' + address.toString('hex');
-      return ethUtil.toChecksumAddress(rawAddress);
+      return vapUtil.toChecksumAddress(rawAddress);
     }
     return address;
   }
 
   getChecksumAddressString() {
-    return ethUtil.toChecksumAddress(this.address);
+    return vapUtil.toChecksumAddress(this.address);
   }
 
-  // ============== (End) EthereumJs-wallet interface methods ======================
+  // ============== (End) VaporyJs-wallet interface methods ======================
   // ============== (Start) Getters  ======================
   get privateKey() {
     if (this.privateKeyAvailable()) {
@@ -107,7 +107,7 @@ export default class Web3WalletAdapter {
   }
 
   get checkSumAddress() {
-    return ethUtil.toChecksumAddress(this.address);
+    return vapUtil.toChecksumAddress(this.address);
   }
 
   // ============== (End) Getters  ======================

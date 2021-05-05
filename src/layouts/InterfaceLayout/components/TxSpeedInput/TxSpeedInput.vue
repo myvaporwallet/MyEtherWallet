@@ -7,7 +7,7 @@
             <h4>Speed of Transaction</h4>
             <popover :popcontent="$t('popover.whatIsSpeedOfTX')"/>
           </div>
-          <!-- <p>Transcation Fee: 0.000013 ETH ($1.234)</p> -->
+          <!-- <p>Transcation Fee: 0.000013 VAP ($1.234)</p> -->
         </div>
         <div class="buttons">
           <div

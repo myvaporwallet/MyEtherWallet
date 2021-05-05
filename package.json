@@ -1,7 +1,7 @@
 {
-  "name": "myetherwallet",
+  "name": "myvaporwallet",
   "version": "5.0.4",
-  "description": "Client side ethereum wallet",
+  "description": "Client side vapory wallet",
   "scripts": {
     "dev": "vue-cli-service serve",
     "start": "npm run update:lists && npm run dev",
@@ -14,7 +14,7 @@
     "build": "npm run update:lists && vue-cli-service build",
     "deploy": "gh-pages -d dist -b gh-pages",
     "codecov": "npm run test:unit && codecov",
-    "update:lists": "node fetchEthListData.js"
+    "update:lists": "node fetchVapListData.js"
   },
   "gitHooks": {
     "pre-commit": "npm run lint && npm run test"
@@ -26,9 +26,9 @@
     "websocket": "^1.0.28"
   },
   "devDependencies": {
-    "@ledgerhq/hw-app-eth": "^4.23.0",
+    "hw-app-vap": "^5.27.2",
     "@ledgerhq/hw-transport-u2f": "^4.21.0",
-    "@myetherwallet/mewconnect-web-client": "^1.0.9",
+    "@myvaporwallet/mewconnect-web-client": "^1.0.9",
     "@vue/cli-plugin-babel": "^3.0.4",
     "@vue/cli-plugin-eslint": "^3.0.4",
     "@vue/cli-plugin-unit-jest": "^3.0.4",
@@ -44,12 +44,12 @@
     "canvas": "^1.6.12",
     "codecov": "^3.1.0",
     "dotenv-webpack": "^1.5.7",
-    "eth-ens-namehash": "^2.0.8",
-    "ethereum-ens": "git+https://github.com/ensdomains/ensjs.git",
-    "ethereumjs-tx": "^1.3.7",
-    "ethereumjs-util": "^6.0.0",
-    "ethereumjs-wallet": "^0.6.2",
-    "ethjs-unit": "^0.1.6",
+    "vap-vns-namehash": "^2.0.8",
+    "vapory-vns": "^0.8.0",
+    "vaporyjs-tx": "^1.3.3",
+    "vaporyjs-util": "^5.2.0",
+    "vaporyjs-wallet": "^0.6.0",
+    "vapjs-unit": "^0.1.6",
     "hdkey": "^1.1.0",
     "imagemin-webpack-plugin": "^2.3.0",
     "jspdf": "^1.4.1",
@@ -72,7 +72,7 @@
     "vue-infinite-slide-bar": "^1.0.8",
     "vue-template-compiler": "^2.5.17",
     "vue-worker": "^1.2.1",
-    "web3": "^1.0.0-beta.36",
+    "@vapory/web3": "^1.0.0-delta.30",
     "worker-loader": "^2.0.0",
     "zxcvbn": "^4.4.2"
   },

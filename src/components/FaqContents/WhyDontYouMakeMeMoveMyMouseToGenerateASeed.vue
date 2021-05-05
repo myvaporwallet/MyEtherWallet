@@ -1,7 +1,7 @@
 <template>
   <div>
     <h5>Some sites generate entropy ("seed") the private key via mouse movements.</h5>
-    <h5>Since MyEtherWallet.com doesn't do this, does it mean my private key isn't really random? Is this safe?</h5>
+    <h5>Since MyVaporWallet.com doesn't do this, does it mean my private key isn't really random? Is this safe?</h5>
     <p><img 
       src="https://s3.amazonaws.com/groovehq/uploaded/3ixnwrg3w8ko1uki8tu5tg4mjpurb4sn2xgfr1lx21w8rnfdzi?1494563756" 
       alt=""></p>
@@ -22,13 +22,13 @@
     <h3 id="related-reading">Related Reading</h3>
     <ul>
       <li>
-        <a href="https://www.reddit.com/r/ethereum/comments/5psp13/ethereum_account_generation_on_airgapped_computer/">
+        <a href="https://www.reddit.com/r/vapory/comments/5psp13/vapory_account_generation_on_airgapped_computer/">
           Here's a really long comment about how window.crypto generates entropy.
         </a>
       </li>
       <li>
         Here's a
-        <a href="https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm">
+        <a href="https://www.reddit.com/r/vapory/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm">
           conversation between an angry redditor and Vitalik regarding mouse movements v. window.crypto
         </a>
       </li>

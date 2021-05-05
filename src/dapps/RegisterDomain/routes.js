@@ -1,8 +1,8 @@
 import RegisterDomain from './RegisterDomain';
-import EnsBidContainer from './containers/EnsBidContainer';
-import InitialENSStateContainer from './containers/InitialENSStateContainer';
-import NameForbiddenENSContainer from './containers/NameForbiddenENSContainer';
-import AlreadyOwnedENSContainer from './containers/AlreadyOwnedENSContainer';
+import VnsBidContainer from './containers/VnsBidContainer';
+import InitialVNSStateContainer from './containers/InitialVNSStateContainer';
+import NameForbiddenVNSContainer from './containers/NameForbiddenVNSContainer';
+import AlreadyOwnedVNSContainer from './containers/AlreadyOwnedVNSContainer';
 export default {
   path: 'dapps/register-domain',
   component: RegisterDomain,
@@ -10,38 +10,38 @@ export default {
   children: [
     {
       path: '',
-      name: 'ENS initial state',
-      component: InitialENSStateContainer,
+      name: 'VNS initial state',
+      component: InitialVNSStateContainer,
       props: true
     },
     {
       path: 'auction',
-      name: 'Bid on ENS and start auction',
-      component: EnsBidContainer,
+      name: 'Bid on VNS and start auction',
+      component: VnsBidContainer,
       props: true
     },
     {
       path: 'bid',
-      name: 'Bid on ENS',
-      component: EnsBidContainer,
+      name: 'Bid on VNS',
+      component: VnsBidContainer,
       props: true
     },
     {
       path: 'owned',
-      name: 'ENS owned',
-      component: AlreadyOwnedENSContainer,
+      name: 'VNS owned',
+      component: AlreadyOwnedVNSContainer,
       props: true
     },
     {
       path: 'reveal',
-      name: 'Reveal ENS bid',
-      component: EnsBidContainer,
+      name: 'Reveal VNS bid',
+      component: VnsBidContainer,
       props: true
     },
     {
       path: 'forbidden',
-      name: 'ENS forbidden',
-      component: NameForbiddenENSContainer,
+      name: 'VNS forbidden',
+      component: NameForbiddenVNSContainer,
       props: true
     }
   ]

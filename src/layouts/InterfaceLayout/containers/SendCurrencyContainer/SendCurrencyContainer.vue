@@ -13,7 +13,7 @@
           </div>
           <currency-picker
             :currency="tokensWithBalance"
-            :page="'sendEthAndTokens'"
+            :page="'sendVapAndTokens'"
             :token="true"
             @selectedCurrency="setSelectedCurrency"/>
           <div class="the-form amount-number">
@@ -23,11 +23,11 @@
               name=""
               placeholder="Amount" >
             <i
-              :class="[selectedCurrency.name === 'Ether' ? parsedBalance < amount ? 'not-good': '' : selectedCurrency.balance < amount ? 'not-good': '','fa fa-check-circle good-button']"
+              :class="[selectedCurrency.name === 'Vapor' ? parsedBalance < amount ? 'not-good': '' : selectedCurrency.balance < amount ? 'not-good': '','fa fa-check-circle good-button']"
               aria-hidden="true"/>
           </div>
           <div
-            v-if="selectedCurrency.name === 'Ether' ? amount > parsedBalance : selectedCurrency.balance < amount"
+            v-if="selectedCurrency.name === 'Vapor' ? amount > parsedBalance : selectedCurrency.balance < amount"
             class="error-message-container">
             <p>{{ $t('common.dontHaveEnough') }}</p>
           </div>
@@ -51,7 +51,7 @@
           </div>
           <div class="the-form address-block">
             <textarea
-              v-ens-resolver="address"
+              v-vns-resolver="address"
               ref="address"
               v-model="address"
               name="name"
@@ -71,7 +71,7 @@
             <h4>{{ $t("common.speedTx") }}</h4>
             <popover :popcontent="$t('popover.whatIsSpeedOfTransactionContent')"/>
           </div>
-          <p>{{ $t("common.txFee") }}: {{ transactionFee }} ETH </p>
+          <p>{{ $t("common.txFee") }}: {{ transactionFee }} VAP </p>
         </div>
         <div class="buttons">
           <div
@@ -167,7 +167,7 @@ import CurrencyPicker from '../../components/CurrencyPicker';
 import InterfaceBottomText from '@/components/InterfaceBottomText';
 import Blockie from '@/components/Blockie';
 import BigNumber from 'bignumber.js';
-import * as unit from 'ethjs-unit';
+import * as unit from 'vapjs-unit';
 
 export default {
   components: {
@@ -201,7 +201,7 @@ export default {
       parsedBalance: 0,
       address: '',
       transactionFee: 0,
-      selectedCurrency: { symbol: 'ETH', name: 'Ethereum' },
+      selectedCurrency: { symbol: 'VAP', name: 'Vapory' },
       raw: {},
       signedTx: '',
       resolvedAddress: ''
@@ -254,8 +254,8 @@ export default {
       document.execCommand('copy');
     },
     async createTx() {
-      const isEth = this.selectedCurrency.name === 'Ethereum';
-      this.nonce = await this.$store.state.web3.eth.getTransactionCount(
+      const isVap = this.selectedCurrency.name === 'Vapory';
+      this.nonce = await this.$store.state.web3.vap.getTransactionCount(
         this.$store.state.wallet.getAddressString()
       );
 
@@ -264,12 +264,12 @@ export default {
         gas: this.gasLimit,
         nonce: this.nonce,
         gasPrice: Number(unit.toWei(this.$store.state.gasPrice, 'gwei')),
-        value: isEth
+        value: isVap
           ? this.amount === ''
             ? 0
-            : unit.toWei(this.amount, 'ether')
+            : unit.toWei(this.amount, 'vapor')
           : 0,
-        to: isEth ? this.address : this.selectedCurrency.addr,
+        to: isVap ? this.address : this.selectedCurrency.addr,
         data: this.data,
         chainId: this.$store.state.network.type.chainID || 1
       };
@@ -282,7 +282,7 @@ export default {
         this.raw['web3WalletOnly'] = true;
       }
 
-      this.$store.state.web3.eth.sendTransaction(this.raw);
+      this.$store.state.web3.vap.sendTransaction(this.raw);
     },
     confirmationModalOpen() {
       this.createTx();
@@ -294,7 +294,7 @@ export default {
       this.$store.dispatch('setGasPrice', Number(val));
     },
     setBalanceToAmt() {
-      if (this.selectedCurrency.name === 'Ethereum') {
+      if (this.selectedCurrency.name === 'Vapory') {
         this.amount = this.parsedBalance - this.transactionFee;
       } else {
         this.amount = this.selectedCurrency.balance;
@@ -302,7 +302,7 @@ export default {
     },
     createDataHex() {
       let amount;
-      if (this.selectedCurrency.name !== 'Ethereum' && this.address !== '') {
+      if (this.selectedCurrency.name !== 'Vapory' && this.address !== '') {
         if (this.amount !== 0) {
           amount = this.amount;
         } else {
@@ -322,7 +322,7 @@ export default {
             type: 'function'
           }
         ];
-        const contract = new this.$store.state.web3.eth.Contract(
+        const contract = new this.$store.state.web3.vap.Contract(
           jsonInterface,
           this.selectedCurrency.addr
         );
@@ -346,12 +346,12 @@ export default {
       delete newRaw['gas'];
       delete newRaw['nonce'];
       this.createDataHex();
-      this.$store.state.web3.eth
+      this.$store.state.web3.vap
         .estimateGas(newRaw)
         .then(res => {
           this.transactionFee = unit.fromWei(
             unit.toWei(this.$store.state.gasPrice, 'gwei') * res,
-            'ether'
+            'vapor'
           );
           this.gasLimit = res;
         })

@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import * as unit from 'ethjs-unit';
+import * as unit from 'vapjs-unit';
 import BN from 'bignumber.js';
 import ConfirmModal from './components/ConfirmModal';
 import SuccessModal from './components/SuccessModal';
@@ -82,9 +82,9 @@ export default {
       parsedBalance: 0,
       toAddress: '',
       transactionFee: 0,
-      selectedCurrency: { symbol: 'ETH', name: 'Ethereum' },
+      selectedCurrency: { symbol: 'VAP', name: 'Vapory' },
       raw: {},
-      ens: {},
+      vns: {},
       signer: {},
       signedTxObject: {},
       signedTx: '',
@@ -112,7 +112,7 @@ export default {
         'Transaction Hash'
       ]);
       const pollReceipt = setInterval(() => {
-        this.$store.state.web3.eth.getTransactionReceipt(newVal).then(res => {
+        this.$store.state.web3.vap.getTransactionReceipt(newVal).then(res => {
           if (res !== null) {
             this.web3WalletRes = res;
             this.showSuccessModal('Transaction sent!', 'Okay');
@@ -154,8 +154,8 @@ export default {
       'showTxConfirmModal',
       (tx, isHardware, signer, resolve) => {
         this.parseRawTx(tx);
-        if (tx.hasOwnProperty('ensObj')) {
-          delete tx['ensObj'];
+        if (tx.hasOwnProperty('vnsObj')) {
+          delete tx['vnsObj'];
         }
         this.isHardwareWallet = isHardware;
         this.responseFunction = resolve;
@@ -170,8 +170,8 @@ export default {
 
     this.$eventHub.$on('showWeb3Wallet', (tx, isHardware, signer, resolve) => {
       this.parseRawTx(tx);
-      if (tx.hasOwnProperty('ensObj')) {
-        delete tx['ensObj'];
+      if (tx.hasOwnProperty('vnsObj')) {
+        delete tx['vnsObj'];
       }
       this.isHardwareWallet = isHardware;
       this.responseFunction = resolve;
@@ -236,11 +236,11 @@ export default {
       this.toAddress = tx.to;
       this.amount = +tx.value;
       this.transactionFee = Number(
-        unit.fromWei(new BN(tx.gasPrice).times(tx.gas).toString(), 'ether')
+        unit.fromWei(new BN(tx.gasPrice).times(tx.gas).toString(), 'vapor')
       );
-      this.ens = {};
-      if (tx.hasOwnProperty('ensObj')) {
-        this.ens = Object.assign({}, tx.ensObj);
+      this.vns = {};
+      if (tx.hasOwnProperty('vnsObj')) {
+        this.vns = Object.assign({}, tx.vnsObj);
       }
       // this.signedTx = this.signedTxObject.rawTransaction
     },
@@ -274,7 +274,7 @@ export default {
       this.parsedBalance = 0;
       this.toAddress = '';
       this.transactionFee = 0;
-      this.selectedCurrency = { symbol: 'ETH', name: 'Ethereum' };
+      this.selectedCurrency = { symbol: 'VAP', name: 'Vapory' };
       this.raw = {};
       this.signedTx = '';
       this.messageToSign = '';

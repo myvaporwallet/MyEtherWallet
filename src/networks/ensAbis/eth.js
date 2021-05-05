@@ -1,4 +1,4 @@
-const EthAbi = [
+const VapAbi = [
   {
     constant: true,
     inputs: [{ name: 'node', type: 'bytes32' }],
@@ -107,4 +107,4 @@ const EthAbi = [
   }
 ];
 
-export default EthAbi;
+export default VapAbi;

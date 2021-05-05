@@ -78,7 +78,7 @@ export default {
       document.execCommand('copy');
     },
     sendTx() {
-      this.$store.state.web3.eth
+      this.$store.state.web3.vap
         .sendSignedTransaction(this.signedTx)
         .on('receipt', () => {})
         .then(() => {

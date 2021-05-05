@@ -1,5 +1,5 @@
-import EthereumjsTx from 'ethereumjs-tx';
-import * as ethUtil from 'ethereumjs-util';
+import VaporyjsTx from 'vaporyjs-tx';
+import * as vapUtil from 'vaporyjs-util';
 import * as HDKey from 'hdkey';
 import HardwareWalletInterface from '../hardwareWallet-interface';
 import { getDerivationPath, paths } from './deterministicWalletPaths';
@@ -89,7 +89,7 @@ export default class TrezorWallet extends HardwareWalletInterface {
 
   // ============== (End) Expected Utility methods ======================
 
-  // ============== (Start) Implementation of required EthereumJs-wallet interface methods =========
+  // ============== (Start) Implementation of required VaporyJs-wallet interface methods =========
   getAddress() {
     if (this.wallet) {
       return this.wallet.address;
@@ -99,12 +99,12 @@ export default class TrezorWallet extends HardwareWalletInterface {
 
   getAddressString() {
     if (this.wallet) {
-      return ethUtil.toChecksumAddress(this.getAddress());
+      return vapUtil.toChecksumAddress(this.getAddress());
     }
     return null;
   }
 
-  // ============== (End) Implementation of required EthereumJs-wallet interface methods ===========
+  // ============== (End) Implementation of required VaporyJs-wallet interface methods ===========
 
   // ============== (Start) Implementation of wallet usage methods ======================
   getAccounts() {
@@ -250,7 +250,7 @@ export default class TrezorWallet extends HardwareWalletInterface {
   }
 
   decimalToHex(dec) {
-    return new ethUtil.BN(dec).toString(16);
+    return new vapUtil.BN(dec).toString(16);
   }
 
   signTxTrezor(rawTx) {
@@ -268,7 +268,7 @@ export default class TrezorWallet extends HardwareWalletInterface {
         rawTx.v = '0x' + this.decimalToHex(result.v);
         rawTx.r = '0x' + result.r;
         rawTx.s = '0x' + result.s;
-        const tx = new EthereumjsTx(rawTx);
+        const tx = new VaporyjsTx(rawTx);
         resolve({
           tx: {
             ...rawTx,
@@ -279,7 +279,7 @@ export default class TrezorWallet extends HardwareWalletInterface {
       };
 
       if (rawTx.to) {
-        TrezorConnect.signEthereumTx(
+        TrezorConnect.signVaporyTx(
           this.wallet.path,
           this.getNakedAddress(rawTx.nonce),
           this.getNakedAddress(rawTx.gasPrice),
@@ -291,7 +291,7 @@ export default class TrezorWallet extends HardwareWalletInterface {
           trezorConnectSignCallback
         );
       } else {
-        TrezorConnect.signEthereumTx(
+        TrezorConnect.signVaporyTx(
           this.wallet.path,
           this.getNakedAddress(rawTx.nonce),
           this.getNakedAddress(rawTx.gasPrice),
@@ -316,7 +316,7 @@ export default class TrezorWallet extends HardwareWalletInterface {
         const signedMessage = '0x' + result.signature;
         resolve(signedMessage);
       };
-      TrezorConnect.ethereumSignMessage(
+      TrezorConnect.vaporySignMessage(
         this.wallet.path,
         stringMessage,
         localCallback,
@@ -337,9 +337,9 @@ export default class TrezorWallet extends HardwareWalletInterface {
 
   _getAddressForWallet(wallet) {
     if (typeof wallet.pubKey === 'undefined') {
-      return '0x' + ethUtil.privateToAddress(wallet.privKey).toString('hex');
+      return '0x' + vapUtil.privateToAddress(wallet.privKey).toString('hex');
     }
-    return '0x' + ethUtil.publicToAddress(wallet.pubKey, true).toString('hex');
+    return '0x' + vapUtil.publicToAddress(wallet.pubKey, true).toString('hex');
   }
 
   // (End) Internal utility methods

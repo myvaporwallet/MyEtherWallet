@@ -13,8 +13,8 @@ import HeaderContainer from '@/containers/HeaderContainer';
 import ConfirmationContainer from '@/containers/ConfirmationContainer';
 import store from 'store';
 import nodeList from '@/networks';
-import Web3 from 'web3';
-import ENS from 'ethereum-ens';
+import Web3 from '@vapory/web3';
+import VNS from 'vapory-vns';
 import url from 'url';
 
 export default {
@@ -29,7 +29,7 @@ export default {
     const network =
       store.get('network') !== undefined
         ? store.get('network')
-        : this.$store.state.Networks['ETH'][3];
+        : this.$store.state.Networks['VAP'][3];
     const hostUrl = url.parse(network.url);
     const newWeb3 = new Web3(
       `${hostUrl.protocol}//${hostUrl.hostname}:${network.port}${
@@ -57,8 +57,8 @@ export default {
       online: true,
       notifications: notifications,
       gasPrice: gasPrice,
-      ens:
-        network.type.ensResolver !== '' ? new ENS(newWeb3.currentProvider) : {}
+      vns:
+        network.type.vnsResolver !== '' ? new VNS(newWeb3.currentProvider) : {}
     };
     if (store.get('notifications') === undefined)
       store.set('notifications', {});

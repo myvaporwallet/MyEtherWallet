@@ -1,1 +1,1 @@
-export { default } from './NameForbiddenENSContainer';
+export { default } from './NameForbiddenVNSContainer';

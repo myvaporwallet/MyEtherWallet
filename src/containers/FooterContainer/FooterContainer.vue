@@ -50,13 +50,13 @@
               <p>{{ $t("footer.welcomeDes") }}</p>
 
               <a
-                href="https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
+                href="https://vaporscan.com/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D"
                 target="_blank">
                 <p
                   class="crypto-link"
-                  data-eth="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D">
-                  <img src="~@/assets/images/icons/eth.svg">
-                  &nbsp;Ethereum Donation
+                  data-vap="0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D">
+                  <img src="~@/assets/images/icons/vap.svg">
+                  &nbsp;Vapory Donation
                 </p>
               </a>
 
@@ -160,13 +160,13 @@ export default {
               href: 'https://digitalbitbox.com/?ref=mew'
             },
             {
-              text: this.$t('footer.ethCard'),
+              text: this.$t('footer.vapCard'),
               href:
-                'https://ether.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site'
+                'https://vapor.cards/?utm_source=mew&utm_medium=cpm&utm_campaign=site'
             },
             {
               text: this.$t('footer.trezor'),
-              href: 'https://trezor.io/?a=myetherwallet.com'
+              href: 'https://trezor.io/?a=myvaporwallet.com'
             },
             {
               text: this.$t('footer.bity'),
@@ -203,31 +203,31 @@ export default {
       ],
       links: [
         {
-          to: 'https://www.facebook.com/myetherwallet',
+          to: 'https://www.facebook.com/myvaporwallet',
           class: 'fa-facebook'
         },
         {
-          to: 'https://www.twitter.com/@myetherwallet',
+          to: 'https://www.twitter.com/@myvaporwallet',
           class: 'fa-twitter'
         },
         {
-          to: 'https://www.instagram.com/myetherwallet',
+          to: 'https://www.instagram.com/myvaporwallet',
           class: 'fa-instagram'
         },
         {
-          to: 'https://www.linkedin.com/company/myetherwallet',
+          to: 'https://www.linkedin.com/company/myvaporwallet',
           class: 'fa-linkedin'
         },
         {
-          to: 'https://www.github.com/myetherwallet',
+          to: 'https://www.github.com/myvaporwallet',
           class: 'fa-github'
         },
         {
-          to: 'https://www.reddit.com/r/myetherwallet',
+          to: 'https://www.reddit.com/r/myvaporwallet',
           class: 'fa-reddit-alien'
         },
         {
-          to: 'https://www.medium.com/@myetherwallet',
+          to: 'https://www.medium.com/@myvaporwallet',
           class: 'fa-medium'
         }
       ]

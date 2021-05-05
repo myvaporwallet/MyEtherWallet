@@ -9,7 +9,7 @@
             <h2>{{ $t("common.faqs") }}</h2>
             <h5>
               {{ $t("home.faqsSubheading") }}
-              <a href="https://kb.myetherwallet.com/">{{ $t("home.faqsSeeMore") }}</a>
+              <a href="https://kb.myvaporwallet.com/">{{ $t("home.faqsSeeMore") }}</a>
             </h5>
           </div>
           <customer-support/>
@@ -21,7 +21,7 @@
               <div
                 class="qa__contents--title"
                 @click="openFAQ('faq1')">
-                <h3>Balances not loading or showing on MyEtherWallet</h3>
+                <h3>Balances not loading or showing on MyVaporWallet</h3>
                 <div class="show-more-buttons">
                   <span
                     v-if="showFAQs.faq1 == false"
@@ -41,7 +41,7 @@
               <div
                 class="qa__contents--title"
                 @click="openFAQ('faq2')">
-                <h3>Does MyEtherWallet support Bitcoin or other coins (LTC STEEM ZEC)?</h3>
+                <h3>Does MyVaporWallet support Bitcoin or other coins (LTC STEEM ZEC)?</h3>
                 <div class="show-more-buttons">
                   <span
                     v-if="showFAQs.faq2 == false"
@@ -54,14 +54,14 @@
               <div
                 v-if="showFAQs.faq2"
                 class="qa__contents--content">
-                <faq-does-myetherwallet-support-bitcoin/>
+                <faq-does-myvaporwallet-support-bitcoin/>
               </div>
             </li>
             <li>
               <div
                 class="qa__contents--title"
                 @click="openFAQ('faq3')">
-                <h3>ETH or Tokens sent to or from exchange haven't shown up</h3>
+                <h3>VAP or Tokens sent to or from exchange haven't shown up</h3>
                 <div class="show-more-buttons">
                   <span
                     v-if="showFAQs.faq3 == false"
@@ -74,14 +74,14 @@
               <div
                 v-if="showFAQs.faq3"
                 class="qa__contents--content">
-                <faq-eth-or-tokens-sent-to/>
+                <faq-vap-or-tokens-sent-to/>
               </div>
             </li>
             <li>
               <div
                 class="qa__contents--title"
                 @click="openFAQ('faq4')">
-                <h3>Where Can I Buy / Sell / Trade / Exchange my ETH or Tokens?</h3>
+                <h3>Where Can I Buy / Sell / Trade / Exchange my VAP or Tokens?</h3>
                 <div class="show-more-buttons">
                   <span
                     v-if="showFAQs.faq4 == false"
@@ -128,19 +128,19 @@
 <script>
 import CustomerSupport from '@/components/CustomerSupport';
 import {
-  BalancesNotLoadingOrShowingOnMyEtherWallet,
-  EthOrTokensSentToOrFromExchangeHaventShownUp,
-  DoesMyEtherWalletSupportBitcoinOrOtherCoins,
-  WhereCanIBuySellTradeExchangeMyEthOrTokens,
+  BalancesNotLoadingOrShowingOnMyVaporWallet,
+  VapOrTokensSentToOrFromExchangeHaventShownUp,
+  DoesMyVaporWalletSupportBitcoinOrOtherCoins,
+  WhereCanIBuySellTradeExchangeMyVapOrTokens,
   WhatIsAnIco
 } from '@/components/FaqContents';
 
 export default {
   components: {
-    'faq-balances-not-loading': BalancesNotLoadingOrShowingOnMyEtherWallet,
-    'faq-eth-or-tokens-sent-to': EthOrTokensSentToOrFromExchangeHaventShownUp,
-    'faq-does-myetherwallet-support-bitcoin': DoesMyEtherWalletSupportBitcoinOrOtherCoins,
-    'faq-where-can-i-buy-sell': WhereCanIBuySellTradeExchangeMyEthOrTokens,
+    'faq-balances-not-loading': BalancesNotLoadingOrShowingOnMyVaporWallet,
+    'faq-vap-or-tokens-sent-to': VapOrTokensSentToOrFromExchangeHaventShownUp,
+    'faq-does-myvaporwallet-support-bitcoin': DoesMyVaporWalletSupportBitcoinOrOtherCoins,
+    'faq-where-can-i-buy-sell': WhereCanIBuySellTradeExchangeMyVapOrTokens,
     'faq-what-is-an-ico': WhatIsAnIco,
     'customer-support': CustomerSupport
   },

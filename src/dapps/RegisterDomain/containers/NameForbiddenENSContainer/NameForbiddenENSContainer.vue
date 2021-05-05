@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="name-forbidden-container">
-    <h3>{{ domainName }}.eth is not available yet!</h3>
+    <h3>{{ domainName }}.vap is not available yet!</h3>
     <interface-bottom-text
       :link-text="$t('interface.learnMore')"
       :question="$t('interface.haveIssues')"
@@ -24,5 +24,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'NameForbiddenENSContainer.scss';
+@import 'NameForbiddenVNSContainer.scss';
 </style>

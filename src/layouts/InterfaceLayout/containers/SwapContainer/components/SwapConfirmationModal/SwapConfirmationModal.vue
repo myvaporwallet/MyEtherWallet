@@ -49,7 +49,7 @@
 <script>
 import Arrow from '@/assets/images/etc/single-arrow.svg';
 import iconBtc from '@/assets/images/currency/btc.svg';
-import iconEth from '@/assets/images/currency/eth.svg';
+import iconVap from '@/assets/images/currency/vap.svg';
 import DetailInformation from './components/DetailInformation';
 import ButtonWithQrCode from '@/components/Buttons/ButtonWithQrCode';
 import HelpCenterButton from '@/components/Buttons/HelpCenterButton';
@@ -65,9 +65,9 @@ export default {
       qrcode: '',
       arrowImage: Arrow,
       fromAddress: {
-        image: iconEth,
+        image: iconVap,
         value: '1.0000000000',
-        name: 'ETH',
+        name: 'VAP',
         address: '0xF54F78F67feCDd37e0C009aB4cCD6549A69540D4'
       },
       toAddress: {
@@ -79,7 +79,7 @@ export default {
       detailInfo: [
         {
           name: 'Network',
-          value: 'ETH by mytherapi.com'
+          value: 'VAP by mytherapi.com'
         },
         {
           name: 'Gas Limit',
@@ -87,11 +87,11 @@ export default {
         },
         {
           name: 'Gas Price',
-          value: '210000 Gwei (0.00321 ETH=$1.234)'
+          value: '210000 Gwei (0.00321 VAP=$1.234)'
         },
         {
           name: 'Max Transaction Fee',
-          value: '441000 Gwei (0.000441 ETH)'
+          value: '441000 Gwei (0.000441 VAP)'
         },
         {
           name: 'Nonce',

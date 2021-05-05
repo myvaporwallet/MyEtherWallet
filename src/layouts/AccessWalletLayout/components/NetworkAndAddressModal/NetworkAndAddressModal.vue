@@ -85,7 +85,7 @@
           @click="setAddress(details, 'address' + index)">
           <li>{{ details.index + 1 }}.</li>
           <li>{{ details.address }}</li>
-          <li>{{ details.balance }} ETH</li>
+          <li>{{ details.balance }} VAP</li>
           <li class="user-input-checkbox">
             <label class="checkbox-container checkbox-container-small">
               <input
@@ -140,7 +140,7 @@
 
 <script>
 import CustomerSupport from '@/components/CustomerSupport';
-import * as unit from 'ethjs-unit';
+import * as unit from 'vapjs-unit';
 
 export default {
   components: {
@@ -313,12 +313,12 @@ export default {
             .getMultipleAccounts(count, offset)
             .then(_accounts => {
               Object.values(_accounts).forEach(async (address, i) => {
-                const rawBalance = await this.$store.state.web3.eth.getBalance(
+                const rawBalance = await this.$store.state.web3.vap.getBalance(
                   address
                 );
                 const balance = unit.fromWei(
                   web3.utils.toBN(rawBalance).toString(),
-                  'ether'
+                  'vapor'
                 );
                 hardwareAddresses.push({ index: offset + i, address, balance });
                 this.hardwareAddresses.push({

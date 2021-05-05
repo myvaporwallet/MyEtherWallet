@@ -17,7 +17,7 @@ import PopOver from '@/components/PopOver';
 
 // Import Directives
 import ClickOutside from '@/directives/ClickOutside';
-import EnsResolver from '@/directives/EnsResolver';
+import VnsResolver from '@/directives/VnsResolver';
 // etc
 import languages from './translations';
 
@@ -30,7 +30,7 @@ Vue.component('popover', PopOver);
 
 // Directives!!!
 Vue.directive('click-outside', ClickOutside);
-Vue.directive('ens-resolver', EnsResolver);
+Vue.directive('vns-resolver', VnsResolver);
 
 Vue.config.productionTip = false;
 

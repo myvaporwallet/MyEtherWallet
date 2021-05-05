@@ -91,7 +91,7 @@
             <h4>{{ $t("common.speedTx") }}</h4>
             <popover :popcontent="$t('popover.whatIsSpeedOfTransactionContent')"/>
           </div>
-          <p>{{ $t("common.txFee") }}: {{ transactionFee }} ETH </p>
+          <p>{{ $t("common.txFee") }}: {{ transactionFee }} VAP </p>
         </div>
         <div class="buttons">
           <div
@@ -151,7 +151,7 @@ import { Misc } from '@/helpers';
 
 import store from 'store';
 
-import * as unit from 'ethjs-unit';
+import * as unit from 'vapjs-unit';
 export default {
   name: 'DeployContract',
   components: {
@@ -217,14 +217,14 @@ export default {
     async signTransaction() {
       try {
         const web3 = this.$store.state.web3;
-        const contract = new web3.eth.Contract(JSON.parse(this.abi));
+        const contract = new web3.vap.Contract(JSON.parse(this.abi));
         const deployArgs = Object.keys(this.inputs).map(key => {
           return this.inputs[key];
         });
         this.data = contract
           .deploy({ data: this.bytecode, arguments: deployArgs })
           .encodeABI();
-        this.nonce = await web3.eth.getTransactionCount(
+        this.nonce = await web3.vap.getTransactionCount(
           this.$store.state.wallet.getAddressString()
         );
 
@@ -235,19 +235,19 @@ export default {
           data: this.data.replace(/\s/g, '')
         };
 
-        const transactionFee = await this.$store.state.web3.eth.estimateGas(
+        const transactionFee = await this.$store.state.web3.vap.estimateGas(
           this.raw
         );
 
         this.raw.gas = transactionFee;
         this.transactionFee = await unit.fromWei(
           unit.toWei(this.$store.state.gasPrice, 'gwei') * transactionFee,
-          'ether'
+          'vapor'
         );
         // estimateGas was failing if chainId in present
         this.raw.chainId = this.$store.state.network.type.chainID || 1;
 
-        await web3.eth.sendTransaction(this.raw);
+        await web3.vap.sendTransaction(this.raw);
       } catch (e) {
         // eslint-disable-next-line
         console.error(e); // todo replace with proper error
@@ -265,12 +265,12 @@ export default {
         const newRaw = this.raw;
         delete newRaw['gas'];
         delete newRaw['nonce'];
-        this.$store.state.web3.eth
+        this.$store.state.web3.vap
           .estimateGas(newRaw)
           .then(res => {
             this.transactionFee = unit.fromWei(
               unit.toWei(this.$store.state.gasPrice, 'gwei') * res,
-              'ether'
+              'vapor'
             );
             this.gasLimit = res;
           })

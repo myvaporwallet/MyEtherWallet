@@ -1,1 +1,1 @@
-export { default } from './InitialENSStateContainer';
+export { default } from './InitialVNSStateContainer';

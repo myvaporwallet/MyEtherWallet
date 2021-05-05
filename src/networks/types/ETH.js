@@ -1,18 +1,18 @@
-import tokens from '@/tokens/tokens-eth.json';
-import contracts from '@/contracts/contract-abi-eth.json';
-import eth from '@/assets/images/networks/eth.svg';
-import { EthAbi } from '../ensAbis';
+import tokens from '@/tokens/tokens-vap.json';
+import contracts from '@/contracts/contract-abi-vap.json';
+import vap from '@/assets/images/networks/vap.svg';
+import { VapAbi } from '../vnsAbis';
 
 export default {
-  name: 'ETH',
-  name_long: 'Ethereum',
-  homePage: 'https://ethereum.org',
-  blockExplorerTX: 'https://etherscan.io/tx/[[txHash]]',
-  blockExplorerAddr: 'https://etherscan.io/address/[[address]]',
+  name: 'VAP',
+  name_long: 'Vapory',
+  homePage: 'https://vapory.org',
+  blockExplorerTX: 'https://vaporscan.com/tx/[[txHash]]',
+  blockExplorerAddr: 'https://vaporscan.com/address/[[address]]',
   chainID: 1,
   tokens: tokens,
   contracts: contracts,
-  ensResolver: '0x314159265dd8dbb310642f98f50c066173c1259b',
-  ensAbi: EthAbi,
-  icon: eth
+  vnsResolver: '0x314159265dd8dbb310642f98f50c066173c1259b',
+  vnsAbi: VapAbi,
+  icon: vap
 };

@@ -1,7 +1,7 @@
 import * as nodes from '../../../networks/types';
 
 const derivationPaths = {
-  [nodes.ETH.name]: "m/44'/60'/0'/0",
+  [nodes.VAP.name]: "m/44'/60'/0'/0",
   [nodes.ETC.name]: "m/44'/61'/0'/0",
   [nodes.ROP.name]: "m/44'/1'/0'/0",
   [nodes.RIN.name]: "m/44'/1'/0'/0",
@@ -11,7 +11,7 @@ const derivationPaths = {
   [nodes.POA.name]: "m/44'/60'/0'/0",
   [nodes.AKA.name]: "m/44'/200625'/0'/0",
   [nodes.PIRL.name]: "m/44'/164'/0'/0",
-  [nodes.ETHO.name]: "m/44'/1313114'/0'/0",
+  [nodes.VAPO.name]: "m/44'/1313114'/0'/0",
   [nodes.ELLA.name]: "m/44'/1'/0'/0",
   [nodes.EGEM.name]: "m/44'/1'/0'/0",
   [nodes.CLO.name]: "m/44'/1'/0'/0",

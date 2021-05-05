@@ -1,8 +1,8 @@
-import { ETHO } from '../types';
+import { VAPO } from '../types';
 export default {
-  type: ETHO,
-  service: 'ether1.org',
-  url: 'https://rpc.ether1.org',
+  type: VAPO,
+  service: 'vapor1.org',
+  url: 'https://rpc.vapor1.org',
   port: 443,
   auth: false,
   username: '',

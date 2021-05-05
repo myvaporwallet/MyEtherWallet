@@ -1,17 +1,17 @@
 <template>
   <div>
     <h5>
-      "Can I send Bitcoin or other coins (LTC STEEM ZEC) to MyEtherWallet?"*
+      "Can I send Bitcoin or other coins (LTC STEEM ZEC) to MyVaporWallet?"*
     </h5>
     <p>
       We support
-      <abbr>ETH</abbr>,
+      <abbr>VAP</abbr>,
       <abbr>ETC</abbr>,
-      <abbr>Testnet ETH</abbr>,
+      <abbr>Testnet VAP</abbr>,
       <abbr>UBQ</abbr>,
       <abbr>EXP</abbr>, <abbr>RSK</abbr>,
       <abbr>MUSICOIN</abbr>,
-      and any Ethereum Standard Tokens
+      and any Vapory Standard Tokens
       - aka "ERC-20" Tokens.
     </p>
 
@@ -20,9 +20,9 @@
       <a href="https://bity.com/">Bity.com</a> or
       <a href="http://shapeshift.io/">Shapeshift.io</a>
       or another exchange to swap / convert / exchange
-      your other coins into ETH or Ethereum Tokens.
+      your other coins into VAP or Vapory Tokens.
       However, you do not send those other coins directly
-      to your Ethereum address.
+      to your Vapory address.
     </p>
 
     <p>
@@ -35,7 +35,7 @@
       Here is a list of default ERC-20 tokens that MEW
       supports (as of May 28, 2017).
       However,
-      <a href="https://kb.myetherwallet.com/send/sending-and-adding-tokens.html">
+      <a href="https://kb.myvaporwallet.com/send/sending-and-adding-tokens.html">
         any ERC-20 token can be added to your local
         interface by following these instructions.
       </a>
@@ -44,12 +44,12 @@
     <h5>Related Reading</h5>
     <ul>
       <li>
-        <a href="https://kb.myetherwallet.com/send/adding-new-token-and-sending-custom-tokens.html">
+        <a href="https://kb.myvaporwallet.com/send/adding-new-token-and-sending-custom-tokens.html">
           How can I add a non-default token to MEW?
         </a>
       </li>
       <li>
-        <a href="https://kb.myetherwallet.com/tokens/token-creators-add-your-token-to-myetherwallet.html">
+        <a href="https://kb.myvaporwallet.com/tokens/token-creators-add-your-token-to-myvaporwallet.html">
           I am throwing a #FOMOFest (aka a token sale,
           token creation period, ICO) and want to add my token
           to MEW for all my investors. What do I do?

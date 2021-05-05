@@ -9,15 +9,15 @@
 
         <div class="search-form mew-custom-form__search">
           <div class="search-input-block">
-            <input 
-              type="text" 
-              name="" 
+            <input
+              type="text"
+              name=""
               placeholder="Search the keyword here...">
           </div>
         </div>
 
         <div class="searchable-contents">
-          <p>Top Searches: MEWconnect / Swap / Send ETH / Security/ Blockchain / Create a Wallet</p>
+          <p>Top Searches: MEWconnect / Swap / Send VAP / Security/ Blockchain / Create a Wallet</p>
         </div>
 
       </div>

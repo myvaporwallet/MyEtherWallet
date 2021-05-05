@@ -9,8 +9,8 @@ async function fetchTokens () {
       fs.mkdirSync(tokenFolder);
     }
 
-    const tokenList = await fetch('https://api.github.com/repos/MyEtherWallet/ethereum-lists/contents/dist/tokens').then(res => res.json()).catch(err => console.log(err));
-    const tokenFileURL = 'https://raw.githubusercontent.com/MyEtherWallet/ethereum-lists/master/dist/tokens/';
+    const tokenList = await fetch('https://api.github.com/repos/MyVaporWallet/vapory-lists/contents/dist/tokens').then(res => res.json()).catch(err => console.log(err));
+    const tokenFileURL = 'https://raw.githubusercontent.com/MyVaporWallet/vapory-lists/master/dist/tokens/';
     if (tokenList !== undefined && tokenList.length > 0) {
       tokenList.forEach(async (tokenFile) => {
         let tokensCollection = await fetch(`${tokenFileURL + tokenFile.name}/tokens-${tokenFile.name}.json`).then(res => res.json()).catch(err => console.log(err));
@@ -30,8 +30,8 @@ async function fetchContracts () {
       fs.mkdirSync(contractFolder);
     }
 
-    const contractList = await fetch('https://api.github.com/repos/MyEtherWallet/ethereum-lists/contents/dist/contracts').then(res => res.json()).catch(err => console.log(err));
-    const contractFileURL = 'https://raw.githubusercontent.com/MyEtherWallet/ethereum-lists/master/dist/contracts/';
+    const contractList = await fetch('https://api.github.com/repos/MyVaporWallet/vapory-lists/contents/dist/contracts').then(res => res.json()).catch(err => console.log(err));
+    const contractFileURL = 'https://raw.githubusercontent.com/MyVaporWallet/vapory-lists/master/dist/contracts/';
     if (contractList !== undefined && contractList.length > 0) {
       contractList.forEach(async (contractFile) => {
         let contractsCollection = await fetch(`${contractFileURL + contractFile.name}/contract-abi-${contractFile.name}.json`).then(res => res.json()).catch(err => console.log(err));

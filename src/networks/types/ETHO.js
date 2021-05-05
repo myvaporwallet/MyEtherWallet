@@ -1,18 +1,18 @@
-import tokens from '@/tokens/tokens-etho.json';
-import contracts from '@/contracts/contract-abi-etho.json';
-import etho from '@/assets/images/networks/etho.svg';
-// import { EthAbi } from '../ensAbis';
+import tokens from '@/tokens/tokens-vapo.json';
+import contracts from '@/contracts/contract-abi-vapo.json';
+import vapo from '@/assets/images/networks/vapo.svg';
+// import { VapAbi } from '../vnsAbis';
 
 export default {
-  name: 'ETHO',
-  name_long: 'Ether1',
-  homePage: 'ether1.org',
-  blockExplorerTX: 'https://explorer.ether1.org/tx/[[txHash]]',
-  blockExplorerAddr: 'https://explorer.ether1.org/addr/[[address]]',
+  name: 'VAPO',
+  name_long: 'Vapor1',
+  homePage: 'vapor1.org',
+  blockExplorerTX: 'https://explorer.vapor1.org/tx/[[txHash]]',
+  blockExplorerAddr: 'https://explorer.vapor1.org/addr/[[address]]',
   chainID: 1313114,
   tokens: tokens,
   contracts: contracts,
-  ensResolver: '',
-  ensAbi: '',
-  icon: etho
+  vnsResolver: '',
+  vnsAbi: '',
+  icon: vapo
 };

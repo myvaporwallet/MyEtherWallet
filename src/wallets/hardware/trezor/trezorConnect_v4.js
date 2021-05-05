@@ -327,13 +327,13 @@ const TrezorConnect = !isBrowser
           );
         };
 
-        // new implementation with ethereum at beginnig
-        this.ethereumSignTx = function() {
-          this.signEthereumTx.apply(this, arguments);
+        // new implementation with vapory at beginnig
+        this.vaporySignTx = function() {
+          this.signVaporyTx.apply(this, arguments);
         };
 
         // old fallback
-        this.signEthereumTx = function(
+        this.signVaporyTx = function(
           address_n,
           nonce,
           gas_price,
@@ -346,7 +346,7 @@ const TrezorConnect = !isBrowser
           requiredFirmware
         ) {
           if (requiredFirmware == null) {
-            requiredFirmware = '1.4.0'; // first firmware that supports ethereum
+            requiredFirmware = '1.4.0'; // first firmware that supports vapory
           }
           if (typeof address_n === 'string') {
             address_n = parseHDPath(address_n);
@@ -354,7 +354,7 @@ const TrezorConnect = !isBrowser
           manager.sendWithChannel(
             _fwStrFix(
               {
-                type: 'signethtx',
+                type: 'signvaptx',
                 address_n: address_n,
                 nonce: nonce,
                 gas_price: gas_price,
@@ -500,7 +500,7 @@ const TrezorConnect = !isBrowser
         };
 
         /**
-         * Sign an Ethereum message
+         * Sign an Vapory message
          *
          * @param {string|array} path
          * @param {string} message to sign (ascii)
@@ -508,7 +508,7 @@ const TrezorConnect = !isBrowser
          * @param {?(string|array<number>)} requiredFirmware
          *
          */
-        this.ethereumSignMessage = function(
+        this.vaporySignMessage = function(
           path,
           message,
           callback,
@@ -523,7 +523,7 @@ const TrezorConnect = !isBrowser
           manager.sendWithChannel(
             _fwStrFix(
               {
-                type: 'signethmsg',
+                type: 'signvapmsg',
                 path: path,
                 message: message
               },
@@ -574,7 +574,7 @@ const TrezorConnect = !isBrowser
         };
 
         /**
-         * Verify ethereum message
+         * Verify vapory message
          *
          * @param {string} address
          * @param {string} signature (base64)
@@ -583,7 +583,7 @@ const TrezorConnect = !isBrowser
          * @param {?(string|array<number>)} requiredFirmware
          *
          */
-        this.ethereumVerifyMessage = function(
+        this.vaporyVerifyMessage = function(
           address,
           signature,
           message,
@@ -596,7 +596,7 @@ const TrezorConnect = !isBrowser
           manager.sendWithChannel(
             _fwStrFix(
               {
-                type: 'verifyethmsg',
+                type: 'verifyvapmsg',
                 address: address,
                 signature: signature,
                 message: message
@@ -769,13 +769,13 @@ const TrezorConnect = !isBrowser
         };
 
         /**
-         * Display ethereum address on device
+         * Display vapory address on device
          *
          * @param {array} address
          * @param {?(string|array<number>)} requiredFirmware
          *
          */
-        this.ethereumGetAddress = function(
+        this.vaporyGetAddress = function(
           address,
           callback,
           requiredFirmware
@@ -787,7 +787,7 @@ const TrezorConnect = !isBrowser
           manager.sendWithChannel(
             _fwStrFix(
               {
-                type: 'ethgetaddress',
+                type: 'vapgetaddress',
                 address_n: address
               },
               requiredFirmware

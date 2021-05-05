@@ -1,4 +1,4 @@
-import * as unit from 'ethjs-unit';
+import * as unit from 'vapjs-unit';
 export default function web3OverrideMew(
   web3,
   wallet,
@@ -27,7 +27,7 @@ export default function web3OverrideMew(
             'showWeb3Wallet',
             tx,
             wallet.isHardware,
-            // This just sends the tx. Metamask doesn't support signing https://github.com/MetaMask/metamask-extension/issues/3475
+            // This just sends the tx. Vapormask doesn't support signing https://github.com/VaporMask/vapormask-extension/issues/3475
             wallet.signTransaction.bind(this),
             res => {
               resolve(res);
@@ -65,15 +65,15 @@ export default function web3OverrideMew(
       delete localTx['nonce'];
 
       tx.nonce = !tx.nonce
-        ? await web3.eth.getTransactionCount(wallet.getAddressString())
+        ? await web3.vap.getTransactionCount(wallet.getAddressString())
         : tx.nonce;
-      tx.gas = !tx.gas ? await web3.eth.estimateGas(localTx) : tx.gas;
+      tx.gas = !tx.gas ? await web3.vap.estimateGas(localTx) : tx.gas;
       tx.chainId = !tx.chainId ? state.network.type.chainID : tx.chainId;
       tx.gasPrice = !tx.gasPrice
         ? unit.toWei(state.gasPrice, 'gwei').toString()
         : tx.gasPrice;
       if (state.wallet.identifier === 'Web3') tx.web3WalletOnly = true;
-      web3.eth
+      web3.vap
         .sendTransaction_(tx)
         .once('transactionHash', hash => {
           dispatch('addNotification', [tx.from, hash, 'Transaction Hash']);
@@ -87,8 +87,8 @@ export default function web3OverrideMew(
     }
   };
   web3.defaultAccount = wallet.getAddressString().toLowerCase();
-  web3.eth.defaultAccount = wallet.getAddressString().toLowerCase();
-  web3.eth.sendTransaction.method.accounts = {
+  web3.vap.defaultAccount = wallet.getAddressString().toLowerCase();
+  web3.vap.sendTransaction.method.accounts = {
     wallet: {
       length: 1,
       [wallet.getAddressString().toLowerCase()]: {
@@ -98,9 +98,9 @@ export default function web3OverrideMew(
     ...methodOverrides
   };
 
-  web3.eth.signTransaction = methodOverrides.signTransaction;
-  web3.eth.sign = methodOverrides.signMessage;
-  web3.eth.sendTransaction_ = web3.eth.sendTransaction;
-  web3.eth.sendTransaction = methodOverrides.sendTransaction;
+  web3.vap.signTransaction = methodOverrides.signTransaction;
+  web3.vap.sign = methodOverrides.signMessage;
+  web3.vap.sendTransaction_ = web3.vap.sendTransaction;
+  web3.vap.sendTransaction = methodOverrides.sendTransaction;
   return web3; // needs to return web3 for use in vuex
 }

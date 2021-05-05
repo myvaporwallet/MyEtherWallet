@@ -182,7 +182,7 @@ export default {
       this.currentFlag = this.$root._i18n.locale;
     }
 
-    // https://github.com/MyEtherWallet/MyEtherWallet/projects/2#card-12172489
+    // https://github.com/MyVaporWallet/MyVaporWallet/projects/2#card-12172489
     // trivial statement to convert dialects to primary language tags, with the exception of Chinese
     if (!/zh[-_]/.test(this.currentFlag)) {
       this.currentFlag = this.currentFlag.split(/[-_]/)[0];

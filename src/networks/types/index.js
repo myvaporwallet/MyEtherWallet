@@ -6,8 +6,8 @@ import ELLA from './ELLA.js';
 import EOSC from './EOSC.js';
 import ESN from './ESN.js';
 import ETC from './ETC.js';
-import ETH from './ETH.js';
-import ETHO from './ETHO.js';
+import VAP from './VAP.js';
+import VAPO from './VAPO.js';
 import ETSC from './ETSC.js';
 import EXP from './EXP.js';
 import GO from './GO.js';
@@ -28,8 +28,8 @@ export {
   EOSC,
   ESN,
   ETC,
-  ETH,
-  ETHO,
+  VAP,
+  VAPO,
   ETSC,
   EXP,
   GO,

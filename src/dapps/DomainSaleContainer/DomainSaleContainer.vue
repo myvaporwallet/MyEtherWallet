@@ -14,7 +14,7 @@
           name=""
           value=""
           placeholder="Please Enter at Least 7 Characters" >
-        <span>.eth</span>
+        <span>.vap</span>
       </div>
     </div>
 

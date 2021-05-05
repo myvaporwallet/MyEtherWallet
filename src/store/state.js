@@ -5,18 +5,18 @@ const state = {
     auth: false,
     password: '',
     port: 443,
-    service: 'myetherwallet.com',
+    service: 'myvaporwallet.com',
     type: {
-      blockExplorerAddr: 'https://ropsten.etherscan.io/address/[[txHash]]',
-      blockExplorerTX: 'https://ropsten.etherscan.io/tx/[[txHash]]',
+      blockExplorerAddr: 'https://ropsten.vaporscan.com/address/[[txHash]]',
+      blockExplorerTX: 'https://ropsten.vaporscan.com/tx/[[txHash]]',
       chainID: 3,
       contracts: [],
-      homePage: 'https://github.com/ethereum/ropsten',
+      homePage: 'https://github.com/vapory/ropsten',
       name: 'ROP',
       name_long: 'Ropsten',
       tokens: []
     },
-    url: 'https://api.myetherwallet.com/rop',
+    url: 'https://api.myvaporwallet.com/rop',
     username: ''
   },
   wallet: null,
@@ -30,7 +30,7 @@ const state = {
   customPaths: {},
   notifications: {},
   gasPrice: 41,
-  ens: {}
+  vns: {}
 };
 
 export default state;

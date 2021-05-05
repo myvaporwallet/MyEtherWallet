@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="already-owned-container">
-    <h3>{{ domainName }}.eth is already owned.</h3>
+    <h3>{{ domainName }}.vap is already owned.</h3>
     <div class="content-container">
-      <p class="label"> Labelhash({{ domainName }}.eth): </p>
+      <p class="label"> Labelhash({{ domainName }}.vap): </p>
       <p class="content"> {{ labelHash }} </p>
     </div>
     <div class="content-container">
@@ -65,7 +65,7 @@ export default {
     return {
       receivedProps: [
         {
-          label: `Labelhash(${this.domainName}.eth)`,
+          label: `Labelhash(${this.domainName}.vap)`,
           data: this.labelHash
         },
         {
@@ -91,5 +91,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'AlreadyOwnedENSContainer.scss';
+@import 'AlreadyOwnedVNSContainer.scss';
 </style>

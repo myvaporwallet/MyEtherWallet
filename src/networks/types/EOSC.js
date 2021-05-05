@@ -1,7 +1,7 @@
 import tokens from '@/tokens/tokens-eosc.json';
 import contracts from '@/contracts/contract-abi-eosc.json';
 import eosc from '@/assets/images/networks/eosc.svg';
-// import { EthAbi } from '../ensAbis';
+// import { VapAbi } from '../vnsAbis';
 
 export default {
   name: 'EOSC',
@@ -12,7 +12,7 @@ export default {
   chainID: 20,
   tokens: tokens,
   contracts: contracts,
-  ensResolver: '',
-  ensAbi: '',
+  vnsResolver: '',
+  vnsAbi: '',
   icon: eosc
 };

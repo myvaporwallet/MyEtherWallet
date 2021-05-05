@@ -89,7 +89,7 @@ export default {
   },
   methods: {
     signMessage() {
-      this.$store.state.web3.eth
+      this.$store.state.web3.vap
         .sign(this.$refs.message.value)
         .then(_signedMessage => {
           this.$refs.signature.value = JSON.stringify(

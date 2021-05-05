@@ -1,8 +1,8 @@
-const EnsResolver = {
+const VnsResolver = {
   update: function(el, binding, vnode) {
     const errorPar = document.createElement('p');
     const web3 = vnode.context.$store.state.web3;
-    const ens = vnode.context.$store.state.ens;
+    const vns = vnode.context.$store.state.vns;
     const _this = vnode.context;
     const removeElements = function() {
       if (vnode.elm.parentElement.children.length > 2) {
@@ -23,14 +23,14 @@ const EnsResolver = {
           removeElements();
         }
       } else {
-        if (_this.$store.state.network.type.ens === '') {
+        if (_this.$store.state.network.type.vns === '') {
           removeElements();
           _this.validAddress = false;
-          errorPar.innerText = 'No ENS resolver in this node';
+          errorPar.innerText = 'No VNS resolver in this node';
           vnode.elm.parentElement.classList.add('with-resolver');
           vnode.elm.parentNode.insertBefore(errorPar, el.nextSibling);
         } else {
-          ens
+          vns
             .owner(el.value)
             .then(address => {
               removeElements();
@@ -42,7 +42,7 @@ const EnsResolver = {
             })
             .catch(() => {
               removeElements();
-              errorPar.innerText = 'ENS name is invalid or not found';
+              errorPar.innerText = 'VNS name is invalid or not found';
               _this.validAddress = false;
               vnode.elm.parentElement.classList.add('with-resolver');
               vnode.elm.parentNode.insertBefore(errorPar, el.nextSibling);
@@ -55,4 +55,4 @@ const EnsResolver = {
   }
 };
 
-export default EnsResolver;
+export default VnsResolver;

@@ -1,29 +1,29 @@
 export {
-  default as BalancesNotLoadingOrShowingOnMyEtherWallet
-} from './BalancesNotLoadingOrShowingOnMyEtherWallet';
+  default as BalancesNotLoadingOrShowingOnMyVaporWallet
+} from './BalancesNotLoadingOrShowingOnMyVaporWallet';
 export {
-  default as EthOrTokensSentToOrFromExchangeHaventShownUp
-} from './EthOrTokensSentToOrFromExchangeHaventShownUp';
+  default as VapOrTokensSentToOrFromExchangeHaventShownUp
+} from './VapOrTokensSentToOrFromExchangeHaventShownUp';
 export {
-  default as DoesMyEtherWalletSupportBitcoinOrOtherCoins
-} from './DoesMyEtherWalletSupportBitcoinOrOtherCoins';
-export { default as HowToBuyEthereumWithUSD } from './HowToBuyEthereumWithUSD';
+  default as DoesMyVaporWalletSupportBitcoinOrOtherCoins
+} from './DoesMyVaporWalletSupportBitcoinOrOtherCoins';
+export { default as HowToBuyVaporyWithUSD } from './HowToBuyVaporyWithUSD';
 export {
-  default as WhereCanIBuySellTradeExchangeMyEthOrTokens
-} from './WhereCanIBuySellTradeExchangeMyEthOrTokens';
+  default as WhereCanIBuySellTradeExchangeMyVapOrTokens
+} from './WhereCanIBuySellTradeExchangeMyVapOrTokens';
 export { default as WhatIsAnIco } from './WhatIsAnIco';
 export {
   default as CouldntEverybodyPutInRandomPrivateKeys
 } from './CouldntEverybodyPutInRandomPrivateKeys';
 export {
-  default as WhatHappensIfMyEtherWalletGoesDown
-} from './WhatHappensIfMyEtherWalletGoesDown';
+  default as WhatHappensIfMyVaporWalletGoesDown
+} from './WhatHappensIfMyVaporWalletGoesDown';
 export {
   default as HowDoIInteractWithAMultisigContract
 } from './HowDoIInteractWithAMultisigContract';
 export {
-  default as CheckTheCurrentBlockNumberOnMyEtherWallet
-} from './CheckTheCurrentBlockNumberOnMyEtherWallet';
+  default as CheckTheCurrentBlockNumberOnMyVaporWallet
+} from './CheckTheCurrentBlockNumberOnMyVaporWallet';
 export {
   default as WhenIUnlockViaKeystoreFileItFreezesMyBrowser
 } from './WhenIUnlockViaKeystoreFileItFreezesMyBrowser';

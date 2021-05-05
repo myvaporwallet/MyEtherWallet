@@ -4,8 +4,8 @@
 
     <div class="title-block">
       <interface-container-title :title="$t('common.swap')"/>
-      <div class="buy-eth">
-        <span>Buy ETH with</span>
+      <div class="buy-vap">
+        <span>Buy VAP with</span>
         <img :src="images.visaMaster">
       </div>
     </div>
@@ -80,7 +80,7 @@
             <h4>{{ $t('common.speedTx') }}</h4>
             <popover :popcontent="$t('popover.whatIsSpeedOfTX')"/>
           </div>
-          <p>{{ $t('common.txFee') }}: 0.000013 ETH ($1.234)</p>
+          <p>{{ $t('common.txFee') }}: 0.000013 VAP ($1.234)</p>
         </div>
         <div class="buttons">
           <div class="small-circle-button-green-border">
@@ -111,7 +111,7 @@
     </div>
 
     <div class="submit-button-container">
-      <h4 v-if="false">1 ETH = 0.000231 BTC</h4>
+      <h4 v-if="false">1 VAP = 0.000231 BTC</h4>
       <div
         class="submit-button large-round-button-green-filled clickable"
         @click="swapConfirmationModalOpen">

@@ -53,11 +53,11 @@ export default {
     return {
       localCurrency:
         this.token === true
-          ? [{ name: 'Ether', symbol: 'ETH' }]
+          ? [{ name: 'Vapor', symbol: 'VAP' }]
           : [{ name: 'Select an item', abi: '', address: '' }],
       selectedCurrency:
         this.token === true
-          ? { name: 'Ether', symbol: 'ETH' }
+          ? { name: 'Vapor', symbol: 'VAP' }
           : { name: 'Select an item', abi: '', address: '' },
       open: false,
       search: '',
@@ -71,7 +71,7 @@ export default {
     },
     currency(newVal) {
       if (this.token) {
-        this.localCurrency = [{ name: 'Ether', symbol: 'ETH' }];
+        this.localCurrency = [{ name: 'Vapor', symbol: 'VAP' }];
       } else {
         this.localCurrency = [{ name: 'Select an item' }];
       }
@@ -86,7 +86,7 @@ export default {
         });
       } else {
         if (this.token) {
-          this.localCurrency = [{ name: 'Ether', symbol: 'ETH' }];
+          this.localCurrency = [{ name: 'Vapor', symbol: 'VAP' }];
         } else {
           this.localCurrency = [
             { name: 'Select an item', abi: '', address: '' }

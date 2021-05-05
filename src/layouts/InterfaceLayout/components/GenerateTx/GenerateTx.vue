@@ -37,7 +37,7 @@
             </div>
             <div class="the-form address-block">
               <textarea
-                v-ens-resolver="address"
+                v-vns-resolver="address"
                 ref="toaddress"
                 v-model="address"
                 name="name"
@@ -112,8 +112,8 @@ import CurrencyPicker from '../CurrencyPicker';
 import SignedTxModal from '../../components/SignedTxModal';
 import Blockie from '@/components/Blockie';
 // eslint-disable-next-line
-const EthTx = require('ethereumjs-tx')
-import * as unit from 'ethjs-unit';
+const VapTx = require('vaporyjs-tx')
+import * as unit from 'vapjs-unit';
 
 export default {
   components: {
@@ -140,7 +140,7 @@ export default {
       toData: '0x',
       parsedBalance: 0,
       localGas: this.gasLimit,
-      coinType: [{ symbol: 'ETH', name: 'Ethereum' }],
+      coinType: [{ symbol: 'VAP', name: 'Vapory' }],
       selectedCoinType: '',
       raw: '',
       signed: '',
@@ -160,7 +160,7 @@ export default {
   mounted() {
     this.parsedBalance = unit.fromWei(
       this.$store.state.account.balance.result,
-      'ether'
+      'vapor'
     );
   },
   methods: {
@@ -173,7 +173,7 @@ export default {
       const raw = {
         from: this.$store.state.wallet.getAddressString(),
         gas: this.localGas,
-        value: unit.toWei(this.toAmt, 'ether'),
+        value: unit.toWei(this.toAmt, 'vapor'),
         data: this.toData,
         nonce: this.locNonce,
         gasPrice: Number(unit.toWei(this.$store.state.gasPrice, 'gwei')),
@@ -185,7 +185,7 @@ export default {
               : '',
         chainId: this.$store.state.network.type.chainID || 1
       };
-      this.$store.state.web3.eth.signTransaction(raw).then(signedTx => {
+      this.$store.state.web3.vap.signTransaction(raw).then(signedTx => {
         this.$emit('createdRawTx', signedTx.rawTransaction);
 
         this.raw = raw;

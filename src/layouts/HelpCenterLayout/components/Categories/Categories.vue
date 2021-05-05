@@ -25,7 +25,7 @@ import LinkBlock from '../LinkBlock';
 
 import iconCommunity from '@/assets/images/HelpCenter/community.svg';
 import iconDrivingDeeper from '@/assets/images/HelpCenter/driving-deepper.svg';
-import iconEns from '@/assets/images/HelpCenter/ens.svg';
+import iconVns from '@/assets/images/HelpCenter/ens.svg';
 import iconGetStarted from '@/assets/images/HelpCenter/get-started.svg';
 import iconGithub from '@/assets/images/icons/github.svg';
 import iconHardware from '@/assets/images/HelpCenter/hardware.svg';
@@ -57,7 +57,7 @@ export default {
         { icon: iconOffline, title: 'Offline' },
         { icon: iconTx, title: 'Transactions' },
         { icon: iconHardware, title: 'Hardware Wallets' },
-        { icon: iconEns, title: 'ENS' },
+        { icon: iconVns, title: 'VNS' },
         { icon: iconNetwork, title: 'Networks / Nodes' },
         { icon: iconDrivingDeeper, title: 'Driving Deeper' },
         { icon: iconSuggestions, title: 'Suggestions' }
@@ -68,7 +68,7 @@ export default {
           title: 'Customer Support',
           description:
             "Can't find your answer? Get in touch and we'll get back as soon as we can.",
-          email: 'support@myetherwallet.com'
+          email: 'support@myvaporwallet.com'
         },
         {
           icon: iconCommunity,

@@ -13,25 +13,25 @@
 import * as Crypto from 'crypto';
 import * as HDKey from 'hdkey';
 
-const DigitalBitboxEth = function(comm, sec) {
+const DigitalBitboxVap = function(comm, sec) {
   this.comm = comm;
-  DigitalBitboxEth.sec = sec || DigitalBitboxEth.sec;
+  DigitalBitboxVap.sec = sec || DigitalBitboxVap.sec;
   this.key = Crypto.createHash('sha256')
-    .update(Buffer.from(DigitalBitboxEth.sec, 'utf8'))
+    .update(Buffer.from(DigitalBitboxVap.sec, 'utf8'))
     .digest();
   this.key = Crypto.createHash('sha256')
     .update(this.key)
     .digest();
-  clearTimeout(DigitalBitboxEth.to);
-  DigitalBitboxEth.to = setTimeout(function() {
-    DigitalBitboxEth.sec = '';
+  clearTimeout(DigitalBitboxVap.to);
+  DigitalBitboxVap.to = setTimeout(function() {
+    DigitalBitboxVap.sec = '';
   }, 60000);
 };
 
-DigitalBitboxEth.sec = '';
-DigitalBitboxEth.to = null;
+DigitalBitboxVap.sec = '';
+DigitalBitboxVap.to = null;
 
-DigitalBitboxEth.aes_cbc_b64_decrypt = function(ciphertext, key) {
+DigitalBitboxVap.aes_cbc_b64_decrypt = function(ciphertext, key) {
   let res;
   try {
     const ub64 = Buffer.from(ciphertext, 'base64').toString('binary');
@@ -46,7 +46,7 @@ DigitalBitboxEth.aes_cbc_b64_decrypt = function(ciphertext, key) {
   return res;
 };
 
-DigitalBitboxEth.aes_cbc_b64_encrypt = function(plaintext, key) {
+DigitalBitboxVap.aes_cbc_b64_encrypt = function(plaintext, key) {
   try {
     const iv = Crypto.pseudoRandomBytes(16);
     const cipher = Crypto.createCipheriv('aes-256-cbc', key, iv);
@@ -61,7 +61,7 @@ DigitalBitboxEth.aes_cbc_b64_encrypt = function(plaintext, key) {
   }
 };
 
-DigitalBitboxEth.parseError = function(errObject) {
+DigitalBitboxVap.parseError = function(errObject) {
   const errMsg = {
     err101:
       'The Digital Bitbox is not initialized. First use the <a href="https://digitalbitbox.com/start" target="_blank" rel="noopener noreferrer">Digital Bitbox desktop app</a> to set up a wallet.', // No password set
@@ -78,10 +78,10 @@ DigitalBitboxEth.parseError = function(errObject) {
   return msg;
 };
 
-DigitalBitboxEth.prototype.getAddress = function(path, callback) {
+DigitalBitboxVap.prototype.getAddress = function(path, callback) {
   const self = this;
   let cmd = '{"xpub":"' + path + '"}';
-  cmd = DigitalBitboxEth.aes_cbc_b64_encrypt(cmd, this.key);
+  cmd = DigitalBitboxVap.aes_cbc_b64_encrypt(cmd, this.key);
   const localCallback = function(response, error) {
     if (typeof error !== 'undefined') {
       callback(undefined, error);
@@ -89,15 +89,15 @@ DigitalBitboxEth.prototype.getAddress = function(path, callback) {
       try {
         response = JSON.parse(response.toString('utf8'));
         if ('error' in response) {
-          callback(undefined, DigitalBitboxEth.parseError(response.error));
+          callback(undefined, DigitalBitboxVap.parseError(response.error));
           return;
         }
         if ('ciphertext' in response) {
           response = JSON.parse(
-            DigitalBitboxEth.aes_cbc_b64_decrypt(response.ciphertext, self.key)
+            DigitalBitboxVap.aes_cbc_b64_decrypt(response.ciphertext, self.key)
           );
           if ('error' in response) {
-            callback(undefined, DigitalBitboxEth.parseError(response.error));
+            callback(undefined, DigitalBitboxVap.parseError(response.error));
             return;
           }
           const hdkey = HDKey.fromExtendedKey(response.xpub);
@@ -116,7 +116,7 @@ DigitalBitboxEth.prototype.getAddress = function(path, callback) {
   self.comm.exchange(cmd, localCallback);
 };
 
-DigitalBitboxEth.signGeneric = function(
+DigitalBitboxVap.signGeneric = function(
   self,
   path,
   chainId,
@@ -129,7 +129,7 @@ DigitalBitboxEth.signGeneric = function(
     '","keypath":"' +
     path +
     '"}]}}';
-  cmd = DigitalBitboxEth.aes_cbc_b64_encrypt(cmd, self.key);
+  cmd = DigitalBitboxVap.aes_cbc_b64_encrypt(cmd, self.key);
 
   const localCallback = function(response, error) {
     if (typeof error !== 'undefined') {
@@ -138,22 +138,22 @@ DigitalBitboxEth.signGeneric = function(
       try {
         response = JSON.parse(response.toString('utf8'));
         if ('error' in response) {
-          callback(undefined, DigitalBitboxEth.parseError(response.error));
+          callback(undefined, DigitalBitboxVap.parseError(response.error));
           return;
         }
         if ('ciphertext' in response) {
           response = JSON.parse(
-            DigitalBitboxEth.aes_cbc_b64_decrypt(response.ciphertext, self.key)
+            DigitalBitboxVap.aes_cbc_b64_decrypt(response.ciphertext, self.key)
           );
           if ('error' in response) {
-            callback(undefined, DigitalBitboxEth.parseError(response.error));
+            callback(undefined, DigitalBitboxVap.parseError(response.error));
             return;
           }
           if ('echo' in response) {
             // Echo from first sign command. (Smart verification not implemented.)
             // Send second sign command.
             let cmd = '{"sign":""}';
-            cmd = DigitalBitboxEth.aes_cbc_b64_encrypt(cmd, self.key);
+            cmd = DigitalBitboxVap.aes_cbc_b64_encrypt(cmd, self.key);
             self.comm.exchange(cmd, localCallback);
             return;
           }
@@ -179,16 +179,16 @@ DigitalBitboxEth.signGeneric = function(
   self.comm.exchange(cmd, localCallback);
 };
 
-DigitalBitboxEth.prototype.signTransaction = function(path, eTx, callback) {
+DigitalBitboxVap.prototype.signTransaction = function(path, eTx, callback) {
   const self = this;
   const hashToSign = eTx.hash(false).toString('hex');
-  DigitalBitboxEth.signGeneric(self, path, eTx._chainId, hashToSign, callback);
+  DigitalBitboxVap.signGeneric(self, path, eTx._chainId, hashToSign, callback);
 };
 
-DigitalBitboxEth.prototype.signMessage = function(path, messageHex, callback) {
+DigitalBitboxVap.prototype.signMessage = function(path, messageHex, callback) {
   const self = this;
   const hashToSign = messageHex.toString('hex');
-  DigitalBitboxEth.signGeneric(self, path, 0, hashToSign, callback);
+  DigitalBitboxVap.signGeneric(self, path, 0, hashToSign, callback);
 };
 
-export { DigitalBitboxEth };
+export { DigitalBitboxVap };

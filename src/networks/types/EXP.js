@@ -1,7 +1,7 @@
 import tokens from '@/tokens/tokens-exp.json';
 import contracts from '@/contracts/contract-abi-exp.json';
 import exp from '@/assets/images/networks/exp.svg';
-// import { EthAbi } from '../ensAbis';
+// import { VapAbi } from '../vnsAbis';
 
 export default {
   name: 'EXP',
@@ -12,7 +12,7 @@ export default {
   chainID: 2,
   tokens: tokens,
   contracts: contracts,
-  ensResolver: '',
-  ensAbi: '',
+  vnsResolver: '',
+  vnsAbi: '',
   icon: exp
 };

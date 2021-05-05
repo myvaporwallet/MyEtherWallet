@@ -1,5 +1,5 @@
 import { BigNumber } from 'bignumber.js';
-// import web3 from 'web3';
+// import web3 from '@vapory/web3';
 
 function sizeHex(bytes) {
   return bytes * 2;

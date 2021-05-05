@@ -19,7 +19,7 @@
         </div>
         <div class="the-form domain-name">
           <input
-            v-ens-resolver="address"
+            v-vns-resolver="address"
             v-model="address"
             type="text"
             placeholder="Enter Domain Name or Address" >
@@ -159,7 +159,7 @@
               v-model="value"
               type="text"
               name=""
-              placeholder="ETH" >
+              placeholder="VAP" >
           </div>
           <div
             v-if="result !== '' && selectedMethod.inputs.length > 0"
@@ -240,7 +240,7 @@ import InterfaceContainerTitle from '../../components/InterfaceContainerTitle';
 import InterfaceBottomText from '@/components/InterfaceBottomText';
 import { Misc } from '@/helpers';
 
-import * as unit from 'ethjs-unit';
+import * as unit from 'vapjs-unit';
 
 export default {
   components: {
@@ -334,7 +334,7 @@ export default {
       return 'number';
     },
     selectFunction(method) {
-      const contract = new this.$store.state.web3.eth.Contract(
+      const contract = new this.$store.state.web3.vap.Contract(
         [method],
         this.address
       );
@@ -375,7 +375,7 @@ export default {
     },
     async write() {
       const web3 = this.$store.state.web3;
-      const contract = new web3.eth.Contract(
+      const contract = new web3.vap.Contract(
         [this.selectedMethod],
         this.address
       );
@@ -396,7 +396,7 @@ export default {
             this.loading = false;
           });
       } else {
-        this.nonce = await web3.eth.getTransactionCount(
+        this.nonce = await web3.vap.getTransactionCount(
           this.$store.state.wallet.getAddressString()
         );
         this.gasLimit = await contract.methods[this.selectedMethod.name](
@@ -406,7 +406,7 @@ export default {
           .then(res => {
             this.transactionFee = unit.fromWei(
               unit.toWei(this.$store.state.gasPrice, 'gwei') * res,
-              'ether'
+              'vapor'
             );
             return res;
           })
@@ -433,7 +433,7 @@ export default {
           data: this.data
         };
 
-        await web3.eth.sendTransaction(this.raw);
+        await web3.vap.sendTransaction(this.raw);
       }
     },
     checkInputsFilled() {

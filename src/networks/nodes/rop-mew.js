@@ -1,8 +1,8 @@
 import { ROP } from '../types';
 export default {
   type: ROP,
-  service: 'myetherwallet.com',
-  url: 'https://api.myetherwallet.com/rop',
+  service: 'myvaporwallet.com',
+  url: 'https://api.myvaporwallet.com/rop',
   port: 443,
   auth: false,
   username: '',

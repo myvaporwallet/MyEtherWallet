@@ -1,11 +1,11 @@
 'use strict';
 
-const SecalotEth = function(comm, pinCode) {
+const SecalotVap = function(comm, pinCode) {
   this.comm = comm;
   if (typeof pinCode !== 'undefined') this.pinCode = pinCode;
 };
 
-SecalotEth.splitPath = function(path) {
+SecalotVap.splitPath = function(path) {
   const result = [];
   const components = path.split('/');
 
@@ -22,14 +22,14 @@ SecalotEth.splitPath = function(path) {
   return result;
 };
 
-SecalotEth.getErrorMessage = function(sw, operation) {
+SecalotVap.getErrorMessage = function(sw, operation) {
   let errorMessage;
   if (sw === 0x6d00) {
-    errorMessage = 'Ethereum wallet on your Secalot is not initialized.';
+    errorMessage = 'Vapory wallet on your Secalot is not initialized.';
   } else if (sw === 0x6982) {
     if (operation === 'getPublicKey') {
       errorMessage =
-        'Invalid PIN-code. Be careful, after entering a wrong PIN-code three times in a row, your Secalot Ethereum wallet would be permanently wiped.';
+        'Invalid PIN-code. Be careful, after entering a wrong PIN-code three times in a row, your Secalot Vapory wallet would be permanently wiped.';
     } else {
       errorMessage = 'PIN-code not verified.';
     }
@@ -44,8 +44,8 @@ SecalotEth.getErrorMessage = function(sw, operation) {
   return errorMessage;
 };
 
-SecalotEth.prototype.getAddress = function(path, callback) {
-  const splitPath = SecalotEth.splitPath(path);
+SecalotVap.prototype.getAddress = function(path, callback) {
+  const splitPath = SecalotVap.splitPath(path);
   const apdus = [];
   let buffer;
   const self = this;
@@ -57,7 +57,7 @@ SecalotEth.prototype.getAddress = function(path, callback) {
       response = Buffer.from(response, 'hex');
       const sw = response.readUInt16BE(response.length - 2);
       if (sw !== 0x9000) {
-        callback(undefined, SecalotEth.getErrorMessage(sw, 'getPublicKey'));
+        callback(undefined, SecalotVap.getErrorMessage(sw, 'getPublicKey'));
         return;
       }
       if (apdus.length === 0) {
@@ -98,8 +98,8 @@ SecalotEth.prototype.getAddress = function(path, callback) {
   self.comm.exchange(apdus.shift(), localCallback);
 };
 
-SecalotEth.prototype.signTransaction = function(path, eTx, callback) {
-  const splitPath = SecalotEth.splitPath(path);
+SecalotVap.prototype.signTransaction = function(path, eTx, callback) {
+  const splitPath = SecalotVap.splitPath(path);
   let offset = 0;
   let rawData = '';
   const apdus = [];
@@ -112,7 +112,7 @@ SecalotEth.prototype.signTransaction = function(path, eTx, callback) {
       const sw = response.readUInt16BE(response.length - 2);
 
       if (sw !== 0x9000) {
-        callback(undefined, SecalotEth.getErrorMessage(sw, 'signTransaction'));
+        callback(undefined, SecalotVap.getErrorMessage(sw, 'signTransaction'));
         return;
       }
 
@@ -179,8 +179,8 @@ SecalotEth.prototype.signTransaction = function(path, eTx, callback) {
   self.comm.exchange(apdus.shift(), localCallback);
 };
 
-SecalotEth.prototype.signMessage = function(path, message, callback) {
-  const splitPath = SecalotEth.splitPath(path);
+SecalotVap.prototype.signMessage = function(path, message, callback) {
+  const splitPath = SecalotVap.splitPath(path);
   let offset = 0;
   let rawData = '';
   const apdus = [];
@@ -192,7 +192,7 @@ SecalotEth.prototype.signMessage = function(path, message, callback) {
       response = Buffer.from(response, 'hex');
       const sw = response.readUInt16BE(response.length - 2);
       if (sw !== 0x9000) {
-        callback(undefined, SecalotEth.getErrorMessage(sw, 'signMessage'));
+        callback(undefined, SecalotVap.getErrorMessage(sw, 'signMessage'));
         return;
       }
       if (apdus.length === 0) {
@@ -211,7 +211,7 @@ SecalotEth.prototype.signMessage = function(path, message, callback) {
   };
 
   message =
-    '\x19Ethereum Signed Message:\n' + message.length.toString() + message;
+    '\x19Vapory Signed Message:\n' + message.length.toString() + message;
   rawData = Buffer.from(Buffer.from(message).toString('hex'), 'hex');
 
   while (offset !== rawData.length) {
@@ -249,4 +249,4 @@ SecalotEth.prototype.signMessage = function(path, message, callback) {
   self.comm.exchange(apdus.shift(), localCallback);
 };
 
-export default SecalotEth;
+export default SecalotVap;

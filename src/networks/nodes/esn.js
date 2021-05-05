@@ -1,7 +1,7 @@
 import { ESN } from '../types';
 export default {
   type: ESN,
-  service: 'ethersocial.org',
+  service: 'vaporsocial.org',
   url: 'https://api.esn.gonspool.com',
   port: 443,
   auth: false,

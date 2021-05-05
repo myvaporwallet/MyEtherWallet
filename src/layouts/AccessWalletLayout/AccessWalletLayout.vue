@@ -1,8 +1,8 @@
 <template>
   <div>
     <access-my-wallet-container/>
-    <price-bar 
-      :v-if="$store.state.online && tokens.length > 1" 
+    <price-bar
+      :v-if="$store.state.online && tokens.length > 1"
       :tokens="tokens"/>
     <faqs/>
   </div>
@@ -33,7 +33,7 @@ export default {
   methods: {
     async getRates() {
       const rates = await fetch(
-        'https://still-waters-52916.herokuapp.com/ticker?filter=BTC,ETH,REP,KNC,OMG,EOS,XRP,BCH,LTC,TRX,NEO,ETC,QTUM,ADA,XMR,QTUM,SNT,ELF,BAT'
+        'https://still-waters-52916.herokuapp.com/ticker?filter=BTC,VAP,REP,KNC,OMG,EOS,XRP,BCH,LTC,TRX,NEO,ETC,QTUM,ADA,XMR,QTUM,SNT,ELF,BAT'
       )
         .then(res => {
           return res.json();

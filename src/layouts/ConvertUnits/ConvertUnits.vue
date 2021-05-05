@@ -6,7 +6,7 @@
         <div class="page-title">
           <h2>Convert Units</h2>
           <p>
-            MyEtherWallet is comprised of talented, inspiring, and hardworking
+            MyVaporWallet is comprised of talented, inspiring, and hardworking
             individuals from around the world. We share the passion to code.
           </p>
         </div>
@@ -15,16 +15,16 @@
           <unit-input :options="options" />
         </div>
 
-        <div class="ether-unit-reference-guide">
+        <div class="vapor-unit-reference-guide">
           <div class="block-title">
-            <h3>Ether Unit Reference Guide</h3>
+            <h3>Vapor Unit Reference Guide</h3>
           </div>
 
           <div class="unit-table">
             <table>
               <tbody>
                 <tr
-                  v-for="eu in etherUnitRef"
+                  v-for="eu in vaporUnitRef"
                   :key="eu.key">
                   <td>{{ eu.name }}</td>
                   <td>{{ eu.unit1 }}</td>
@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-      etherUnitRef: [
+      vaporUnitRef: [
         {
           name: 'Wei',
           unit1: '1',
@@ -64,66 +64,66 @@ export default {
           unit1: '1,000',
           unit2: '10',
           unit2e: '3',
-          desc: 'ada, femtoether'
+          desc: 'ada, femtovapor'
         },
         {
           name: 'Mwei',
           unit1: '1,000,000',
           unit2: '10',
           unit2e: '6',
-          desc: 'babbage, picoether'
+          desc: 'babbage, picovapor'
         },
         {
           name: 'Gwei',
           unit1: '1,000,000,000',
           unit2: '10',
           unit2e: '9',
-          desc: 'shannon, nanoether, nano'
+          desc: 'shannon, nanovapor, nano'
         },
         {
           name: 'Szabo',
           unit1: '1,000,000,000,000',
           unit2: '10',
           unit2e: '12',
-          desc: 'microether, micro'
+          desc: 'microvapor, micro'
         },
         {
           name: 'Finney',
           unit1: '1,000,000,000,000,000',
           unit2: '10',
           unit2e: '15',
-          desc: 'milliether, milli'
+          desc: 'millivapor, milli'
         },
         {
-          name: 'Ether',
+          name: 'Vapor',
           unit1: '1,000,000,000,000,000,000',
           unit2: '10',
           unit2e: '18',
           desc: ''
         },
         {
-          name: 'Kether',
+          name: 'Kvapor',
           unit1: '1,000,000,000,000,000,000,000',
           unit2: '10',
           unit2e: '21',
           desc: 'grand, einstein'
         },
         {
-          name: 'Mether',
+          name: 'Mvapor',
           unit1: '1,000,000,000,000,000,000,000,000',
           unit2: '10',
           unit2e: '24',
           desc: ''
         },
         {
-          name: 'Gether',
+          name: 'Gvapor',
           unit1: '1,000,000,000,000,000,000,000,000,000',
           unit2: '10',
           unit2e: '27',
           desc: ''
         },
         {
-          name: 'Tether',
+          name: 'Tvapor',
           unit1: '1,000,000,000,000,000,000,000,000,000,000',
           unit2: '10',
           unit2e: '30',
@@ -137,11 +137,11 @@ export default {
         'gwei',
         'szabo',
         'finney',
-        'ether',
-        'kether',
-        'mether',
-        'gether',
-        'tether'
+        'vapor',
+        'kvapor',
+        'mvapor',
+        'gvapor',
+        'tvapor'
       ]
     };
   }

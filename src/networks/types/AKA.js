@@ -1,7 +1,7 @@
 import tokens from '@/tokens/tokens-akroma.json';
 import contracts from '@/contracts/contract-abi-akroma.json';
 import aka from '@/assets/images/networks/aka.svg';
-// import { EthAbi } from '../ensAbis';
+// import { VapAbi } from '../vnsAbis';
 
 export default {
   name: 'AKA',
@@ -12,7 +12,7 @@ export default {
   chainID: 200625,
   tokens: tokens,
   contracts: contracts,
-  ensResolver: '',
-  ensAbi: '',
+  vnsResolver: '',
+  vnsAbi: '',
   icon: aka
 };

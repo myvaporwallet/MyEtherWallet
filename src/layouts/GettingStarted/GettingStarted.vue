@@ -52,7 +52,7 @@
             <router-link to="/">Terms</router-link>
           </div>
           <div class="create-wallet-warnings__copyright">
-            <p>© 2018 MyEtherWallet. All rights reserved.</p>
+            <p>© 2018 MyVaporWallet. All rights reserved.</p>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import WhatIsMyEtherWallet from './components/WhatIsMyEtherWallet';
+import WhatIsMyVaporWallet from './components/WhatIsMyVaporWallet';
 import WhereAreMyFundsStored from './components/WhereAreMyFundsStored';
 import WhatIfILoseMyKeysOrPassword from './components/WhatIfILoseMyKeysOrPassword';
 import SomeHelpfulTips from './components/SomeHelpfulTips';
@@ -71,7 +71,7 @@ import Congratulations from './components/Congratulations';
 
 export default {
   components: {
-    'what-is-mew': WhatIsMyEtherWallet,
+    'what-is-mew': WhatIsMyVaporWallet,
     'where-my-funds-stored': WhereAreMyFundsStored,
     'what-if-i-lose-key': WhatIfILoseMyKeysOrPassword,
     'some-helpful-tips': SomeHelpfulTips,

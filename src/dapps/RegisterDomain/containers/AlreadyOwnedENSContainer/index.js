@@ -1,1 +1,1 @@
-export { default } from './AlreadyOwnedENSContainer';
+export { default } from './AlreadyOwnedVNSContainer';

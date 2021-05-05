@@ -41,12 +41,12 @@ export default {
         },
         {
           img: reddit,
-          to: 'https://www.reddit.com/r/myetherwallet',
+          to: 'https://www.reddit.com/r/myvaporwallet',
           name: 'reddit'
         },
         {
           img: github,
-          to: 'https://www.github.com/myetherwallet',
+          to: 'https://www.github.com/myvaporwallet',
           name: 'github'
         }
       ]

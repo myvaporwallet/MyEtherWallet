@@ -1,6 +1,6 @@
 import { override, WalletWrapper } from '@/wallets';
 import url from 'url';
-import web3 from 'web3';
+import web3 from '@vapory/web3';
 
 const addNotification = function({ commit, state }, val) {
   const address = web3.utils.toChecksumAddress(val[0]);
@@ -100,8 +100,8 @@ const switchNetwork = function({ commit }, networkObj) {
   // check if wallet is hardware.  if true, check if it supports this network. if not, do nothing
   commit('SWITCH_NETWORK', networkObj);
 };
-const setENS = function({ commit }, ens) {
-  commit('SET_ENS', ens);
+const setVNS = function({ commit }, vns) {
+  commit('SET_VNS', vns);
 };
 
 const updateNotification = function({ commit, state }, val) {
@@ -127,7 +127,7 @@ export default {
   setGasPrice,
   setWeb3Wallet,
   setState,
-  setENS,
+  setVNS,
   setWeb3Instance,
   switchNetwork,
   updateNotification

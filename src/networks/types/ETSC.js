@@ -1,18 +1,18 @@
 import tokens from '@/tokens/tokens-etsc.json';
 import contracts from '@/contracts/contract-abi-etsc.json';
 import etsc from '@/assets/images/networks/etsc.svg';
-// import { EthAbi } from '../ensAbis';
+// import { VapAbi } from '../vnsAbis';
 
 export default {
   name: 'ETSC',
-  name_long: 'EthereumSocial',
-  homePage: 'https://ethereumsocial.kr/',
-  blockExplorerTX: 'https://explorer.ethereumsocial.kr/tx/[[txHash]]',
-  blockExplorerAddr: 'https://explorer.ethereumsocial.kr/addr/[[address]]',
+  name_long: 'VaporySocial',
+  homePage: 'https://vaporysocial.kr/',
+  blockExplorerTX: 'https://explorer.vaporysocial.kr/tx/[[txHash]]',
+  blockExplorerAddr: 'https://explorer.vaporysocial.kr/addr/[[address]]',
   chainID: 28,
   tokens: tokens,
   contracts: contracts,
-  ensResolver: '',
-  ensAbi: '',
+  vnsResolver: '',
+  vnsAbi: '',
   icon: etsc
 };

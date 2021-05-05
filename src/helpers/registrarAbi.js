@@ -127,7 +127,7 @@ const RegistrarAbi = [
   {
     constant: true,
     inputs: [],
-    name: 'ens',
+    name: 'vns',
     outputs: [
       {
         name: '',
@@ -395,7 +395,7 @@ const RegistrarAbi = [
   {
     inputs: [
       {
-        name: '_ens',
+        name: '_vns',
         type: 'address'
       },
       {

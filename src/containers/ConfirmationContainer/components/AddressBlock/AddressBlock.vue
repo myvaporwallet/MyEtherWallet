@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import web3 from 'web3';
+import web3 from '@vapory/web3';
 export default {
   props: {
     address: {
@@ -36,7 +36,7 @@ export default {
     },
     currency: {
       type: String,
-      default: 'eth'
+      default: 'vap'
     },
     tokenTransferTo: {
       type: String,
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     converter(num) {
-      return web3.utils.fromWei(num.toString(), 'ether');
+      return web3.utils.fromWei(num.toString(), 'vapor');
     }
   }
 };

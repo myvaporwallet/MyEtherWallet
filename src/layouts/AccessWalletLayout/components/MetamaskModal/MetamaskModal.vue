@@ -1,15 +1,15 @@
 <template>
   <b-modal
-    ref="metamask"
-    :title="$t('accessWallet.accessByMetaMask')"
+    ref="vapormask"
+    :title="$t('accessWallet.accessByVaporMask')"
     hide-footer
-    class="bootstrap-modal modal-metamask"
+    class="bootstrap-modal modal-vapormask"
     centered>
     <div v-if="web3WalletExists">
       <div class="modal-multi-icons">
         <img
           class="icon"
-          src="~@/assets/images/icons/button-metamask-fox.svg">
+          src="~@/assets/images/icons/button-vapormask-fox.svg">
         <img
           class="icon"
           src="~@/assets/images/icons/clip.svg">
@@ -19,10 +19,10 @@
       </div>
       <div class="d-block content-container text-center">
         <h4 v-show="!unlockWeb3Wallet">
-          {{ $t("accessWallet.metaMaskModalDesc") }}
+          {{ $t("accessWallet.vaporMaskModalDesc") }}
         </h4>
         <h4 v-show="unlockWeb3Wallet">
-          {{ $t("accessWallet.unlockMetamaskWallet") }}
+          {{ $t("accessWallet.unlockVapormaskWallet") }}
         </h4>
       </div>
       <div class="accept-terms">
@@ -55,11 +55,11 @@
       <div class="modal-multi-icons">
         <img
           class="icon"
-          src="~@/assets/images/icons/button-metamask-fox.svg">
+          src="~@/assets/images/icons/button-vapormask-fox.svg">
       </div>
       <div class="d-block content-container text-center">
         <h4>
-          {{ $t("accessWallet.installMetaMaskModalDesc") }}
+          {{ $t("accessWallet.installVaporMaskModalDesc") }}
         </h4>
       </div>
       <div class="accept-terms hidden">
@@ -71,11 +71,11 @@
       <div class="button-container">
         <a
           v-show="!refreshPage"
-          href="https://metamask.io/"
+          href="https://vapormask.io/"
           target="_blank"
           class="mid-round-button-green-filled close-button"
           @click="refreshPage=true">
-          {{ $t("accessWallet.installMetamask") }}
+          {{ $t("accessWallet.installVapormask") }}
         </a>
         <b-btn
           v-show="refreshPage"
@@ -119,22 +119,22 @@ export default {
       window.location.reload();
     },
     getWeb3Wallet() {
-      // NOTE: Uncomment code and debug when metamask's new version launches
+      // NOTE: Uncomment code and debug when vapormask's new version launches
       // if (window.web3 === undefined) {
       //   window.addEventListener('message', ({ data }) => {
-      //     if (data && data.type && data.type === 'ETHEREUM_PROVIDER_SUCCESS') {
-      //       window.web3 = new Web3(ethereum);
+      //     if (data && data.type && data.type === 'VAPORY_PROVIDER_SUCCESS') {
+      //       window.web3 = new Web3(vapory);
       //     }
       //   });
       //   window.postMessage(
-      //     { type: 'ETHEREUM_PROVIDER_REQUEST', web3: true },
+      //     { type: 'VAPORY_PROVIDER_REQUEST', web3: true },
       //     '*'
       //   );
       // }
 
       if (this.checkWeb3() !== true) return;
 
-      window.web3.eth.getAccounts((err, accounts) => {
+      window.web3.vap.getAccounts((err, accounts) => {
         if (err) {
           this.web3WalletExists = false;
           return;
@@ -159,5 +159,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'MetamaskModal.scss';
+@import 'VapormaskModal.scss';
 </style>

@@ -1,14 +1,14 @@
 <template lang="html">
   <div>
-    <json-string-modal 
-      ref="jsonStringModal" 
+    <json-string-modal
+      ref="jsonStringModal"
       :update-json-string="updateJson"/>
     <div class="name-available-container">
       <div
         v-if="$route.fullPath.includes('auction')"
         class="content-header">
         <div>
-          <h3> {{ domainName }}.eth </h3>
+          <h3> {{ domainName }}.vap </h3>
           <p>Cheers! This Domain is available.</p>
         </div>
       </div>
@@ -16,15 +16,15 @@
         v-if="$route.fullPath.includes('bid')"
         class="auction-started">
         <div>
-          <h3> An auction has been started for {{ domainName }}.eth </h3>
+          <h3> An auction has been started for {{ domainName }}.vap </h3>
         </div>
       </div>
       <div
         v-if="$route.fullPath.includes('reveal')"
         class="auction-started">
         <h3>
-          Reveal your bid for {{ domainName }}.eth now. <br>
-          {{ highestBidder }} ETH (Current highest bid)
+          Reveal your bid for {{ domainName }}.vap now. <br>
+          {{ highestBidder }} VAP (Current highest bid)
         </h3>
       </div>
       <div class="timer-container">
@@ -117,7 +117,7 @@
               class="detail-info">
               <div class="detail-info-item">
                 <span class="detail-title">Actual Bid Amount</span>
-                <span class="detail-value">{{ raw.bidAmount }} ETH</span>
+                <span class="detail-value">{{ raw.bidAmount }} VAP</span>
               </div>
               <div class="detail-info-item">
                 <span class="detail-title">Secret Phrase</span>
@@ -129,7 +129,7 @@
               </div>
               <div class="detail-info-item">
                 <span class="detail-title">Bid Mask</span>
-                <span class="detail-value">{{ raw.bidMask }} ETH</span>
+                <span class="detail-value">{{ raw.bidMask }} VAP</span>
               </div>
               <div class="detail-info-item">
                 <span class="detail-title">Auction Ends</span>
@@ -303,7 +303,7 @@ export default {
         bidMask: raw.bidMask,
         value: this.$store.state.web3.utils.toWei(
           raw.bidAmount.toString(),
-          'ether'
+          'vapor'
         ),
         secretPhrase: raw.secretPhrase,
         secretPhraseSHA3: raw.secretPhraseSHA3
@@ -332,13 +332,13 @@ export default {
         width: 300
       });
 
-      doc.save(`${this.raw.name}.eth-bid.pdf`);
-      this.$store.state.web3.eth.sendTransaction(raw);
+      doc.save(`${this.raw.name}.vap-bid.pdf`);
+      this.$store.state.web3.vap.sendTransaction(raw);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import 'EnsBidContainer.scss';
+@import 'VnsBidContainer.scss';
 </style>

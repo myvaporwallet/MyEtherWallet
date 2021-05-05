@@ -4,15 +4,15 @@
     <div class="block-progressbar">
       <dir class="block-progressbar__container">
         <div class="block-progressbar__title">
-          About MyEtherWallet
+          About MyVaporWallet
         </div>
         <div class="block-progressbar__progressbar">
           <div :class="progressBarValue"/>
         </div>
         <div class="block-progressbar__content">
-          <h4>What is MyEtherWallet?</h4>
+          <h4>What is MyVaporWallet?</h4>
           <p>
-            MyEtherWallet(MEW) is a free, open-source, client-side interface.
+            MyVaporWallet(MEW) is a free, open-source, client-side interface.
             MEW allows you to interact directly with the blockchain, while
             remaining in full control of your keys and funds.
           </p>

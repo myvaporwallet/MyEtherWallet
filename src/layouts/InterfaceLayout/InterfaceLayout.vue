@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="$store.state.wallet !== null"
-    class="send-eth-and-tokens">
+    class="send-vap-and-tokens">
     <div class="wrap">
       <div class="side-nav">
         <interface-side-menu/>
@@ -40,7 +40,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { parseTokensHex } from '@/helpers';
-import ENS from 'ethereum-ens';
+import VNS from 'vapory-ens';
 
 import WalletNotFoundContainer from './containers/WalletNotFoundContainer';
 
@@ -140,11 +140,11 @@ export default {
           type: 'function'
         }
       ];
-      const contract = new this.$store.state.web3.eth.Contract(abi);
+      const contract = new this.$store.state.web3.vap.Contract(abi);
       const data = contract.methods
         .getAllBalance(this.wallet.getAddressString(), true, true, true, 0)
         .encodeABI();
-      const response = this.$store.state.web3.eth
+      const response = this.$store.state.web3.vap
         .call({
           to: '0xdAFf2b3BdC710EB33A847CCb30A24789c0Ef9c5b',
           data: data
@@ -170,11 +170,11 @@ export default {
           outputs: [{ name: 'out', type: 'uint256' }]
         }
       ];
-      const contract = new web3.eth.Contract(contractAbi);
+      const contract = new web3.vap.Contract(contractAbi);
       const data = contract.methods
         .balanceOf(this.wallet.getAddressString())
         .encodeABI();
-      const balance = await web3.eth
+      const balance = await web3.vap
         .call({
           to: token.address
             ? web3.utils.toChecksumAddress(token.address)
@@ -259,7 +259,7 @@ export default {
       this.tokensWithBalance = allTokens;
     },
     getBlock() {
-      this.$store.state.web3.eth
+      this.$store.state.web3.vap
         .getBlockNumber()
         .then(res => {
           this.blockNumber = res;
@@ -271,10 +271,10 @@ export default {
     },
     getBalance() {
       const web3 = this.$store.state.web3;
-      web3.eth
+      web3.vap
         .getBalance(this.address)
         .then(res => {
-          this.balance = web3.utils.fromWei(res, 'ether');
+          this.balance = web3.utils.fromWei(res, 'vapor');
           this.$store.dispatch('setAccountBalance', this.balance);
         })
         .catch(err => {
@@ -284,7 +284,7 @@ export default {
     },
     checkWeb3WalletAddrChange() {
       this.pollAddress = setInterval(() => {
-        window.web3.eth.getAccounts((err, accounts) => {
+        window.web3.vap.getAccounts((err, accounts) => {
           if (err) {
             // eslint-disable-next-line no-console
             console.error(err);
@@ -292,7 +292,7 @@ export default {
           }
           if (!accounts.length) {
             // eslint-disable-next-line no-console
-            console.error('Please unlock metamask');
+            console.error('Please unlock vapormask');
             return;
           }
           const address = accounts[0];
@@ -343,17 +343,17 @@ export default {
           this.getBalance();
           this.pollBlock = setInterval(this.getBlock, 10000);
           this.setTokens();
-          this.setENS();
+          this.setVNS();
         }
       }
     },
-    setENS() {
+    setVNS() {
       if (this.wallet.identifier === 'Web3') {
-        this.$store.dispatch('setENS', new ENS(window.web3.currentProvider));
+        this.$store.dispatch('setVNS', new VNS(window.web3.currentProvider));
       } else {
         this.$store.dispatch(
-          'setENS',
-          new ENS(this.$store.state.web3.currentProvider)
+          'setVNS',
+          new VNS(this.$store.state.web3.currentProvider)
         );
       }
     }

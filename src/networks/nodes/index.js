@@ -8,23 +8,23 @@ import eosc from './eosc';
 import esn from './esn';
 import etcepool from './etc-epool';
 import etcetccoop from './etc-etccoop';
-import etcethereumcommonwealthgeth from './etc-ethereumcommonwealth-geth';
-import etcethereumcommonwealthparity from './etc-ethereumcommonwealth-parity';
+import etcvaporycommonwealthgvap from './etc-vaporycommonwealth-gvap';
+import etcvaporycommonwealthparity from './etc-vaporycommonwealth-parity';
 import etcgastracker from './etc-gastracker';
-import ethethscan from './eth-ethscan';
-import ethgiveth from './eth-giveth';
-import ethinfura from './eth-infura';
-import ethmew from './eth-mew';
-import etho from './etho';
+import vapvapscan from './vap-vapscan';
+import vapgivvap from './vap-givvap';
+import vapinfura from './vap-infura';
+import vapmew from './vap-mew';
+import vapo from './vapo';
 import etsc from './etsc';
 import exp from './exp';
 import go from './go';
-import kovethscan from './kov-ethscan';
+import kovvapscan from './kov-vapscan';
 import kovinfura from './kov-infura';
 import music from './music';
 import pirl from './pirl';
 import poa from './poa';
-import rinethscan from './rin-ethscan';
+import rinvapscan from './rin-vapscan';
 import rininfura from './rin-infura';
 import ropinfura from './rop-infura';
 import ropmew from './rop-mew';
@@ -41,23 +41,23 @@ export {
   esn,
   etcepool,
   etcetccoop,
-  etcethereumcommonwealthgeth,
-  etcethereumcommonwealthparity,
+  etcvaporycommonwealthgvap,
+  etcvaporycommonwealthparity,
   etcgastracker,
-  ethethscan,
-  ethgiveth,
-  ethinfura,
-  ethmew,
-  etho,
+  vapvapscan,
+  vapgivvap,
+  vapinfura,
+  vapmew,
+  vapo,
   etsc,
   exp,
   go,
-  kovethscan,
+  kovvapscan,
   kovinfura,
   music,
   pirl,
   poa,
-  rinethscan,
+  rinvapscan,
   rininfura,
   ropinfura,
   ropmew,

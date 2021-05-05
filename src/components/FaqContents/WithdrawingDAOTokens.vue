@@ -1,13 +1,13 @@
 <template>
   <div>
     <h5>
-      The old DAO MyEtherWallet doesn't seem to want to stay
+      The old DAO MyVaporWallet doesn't seem to want to stay
       online & functioning. We're sorry.
     </h5>
     <p>
       New instructions & where you can go to get help:
-      <a href="https://www.reddit.com/r/ethereum/comments/7ojy4h/there_are_still_200_million_unclaimed_funds_in/dsap0gr/">
-        https://www.reddit.com/r/ethereum/comments/7ojy4h/there_are_still_200_million_unclaimed_funds_in/dsap0gr/
+      <a href="https://www.reddit.com/r/vapory/comments/7ojy4h/there_are_still_200_million_unclaimed_funds_in/dsap0gr/">
+        https://www.reddit.com/r/vapory/comments/7ojy4h/there_are_still_200_million_unclaimed_funds_in/dsap0gr/
       </a>
     </p>
 
@@ -26,18 +26,18 @@
     <h5>Walkthru for DAO Main withdraw</h5>
     <ol>
       <li>
-        Have ETH in the account that has DAO tokens in it so you can collect the refund.
+        Have VAP in the account that has DAO tokens in it so you can collect the refund.
       </li>
       <li>
         Go to
-        <a href="https://www.myetherwallet.com/#send-transaction">
-          https://www.myetherwallet.com/#send-transaction
+        <a href="https://www.myvaporwallet.com/#send-transaction">
+          https://www.myvaporwallet.com/#send-transaction
         </a>
         (the current version)
       </li>
       <li>
-        Make sure the ETH node in the top right corner is
-        selected (Try out Giveth.io's donated node ;-) )
+        Make sure the VAP node in the top right corner is
+        selected (Try out Givvap.io's donated node ;-) )
       </li>
       <li>
         At the top of the screen there is a slider for gasPrice. Make
@@ -45,8 +45,8 @@
         If the CryptoKitties are still breeding like CryptoBunnies this might
         need to be 61 Gwei or more! If the network isnt under much load 1
         Gwei or less will work, check
-        <a href="https://ethgasstation.info/">
-          https://ethgasstation.info/
+        <a href="https://vapgasstation.info/">
+          https://vapgasstation.info/
         </a>
         to find the Standard gasPrice that will work immediately.
       </li>
@@ -75,9 +75,9 @@
     <p>5d. DATA: <abbr>0x3ccfd60b</abbr></p>
     <p>5e. Click Generate Tx and then click Send Tx</p>
     <p>
-      Now wait for the Ethereum Blockchain to work its magic and you
-      will have a bunch of ETH delivered to you :-) Remember that a lot
-      of people worked hard to make this possible, the whole Ethereum
+      Now wait for the Vapory Blockchain to work its magic and you
+      will have a bunch of VAP delivered to you :-) Remember that a lot
+      of people worked hard to make this possible, the whole Vapory
       network hard forked for this! Pay it forward to the people around
       you, if this was built on Bitcoin, you would have lost all your
       funds #gratitude ;-D
@@ -86,7 +86,7 @@
     <h5>Walk thru for ExtraBalance Refund</h5>
     <p>
       This short explainer is to help you understand what is happening in
-      the code, if you don't really care and just want that sweet sweet ether,
+      the code, if you don't really care and just want that sweet sweet vapor,
       dont worry about it and skip to the numbered steps.
     </p>
     <p>
@@ -102,21 +102,21 @@
 
     <ol>
       <li>
-        Have ETH in the account that can collect the refund.
+        Have VAP in the account that can collect the refund.
       </li>
       <li>
-        Go to <a href="https://www.myetherwallet.com/#send-transaction">https://www.myetherwallet.com/#send-transaction</a>
+        Go to <a href="https://www.myvaporwallet.com/#send-transaction">https://www.myvaporwallet.com/#send-transaction</a>
         (the current version)
       </li>
       <li>
-        Make sure the ETH node in the top right corner is selected (Try out Giveth.io's donated node ;-) )
+        Make sure the VAP node in the top right corner is selected (Try out Givvap.io's donated node ;-) )
       </li>
       <li>
         At the top of the screen there is a slider for gasPrice. Make sure you
         have selected a gasPrice that will make your tx go thru. If the
         CryptoKitties are still breeding like CryptoBunnies this might need
         to be 61 Gwei or more! If the network isnt under much load 1 Gwei or less
-        will work, check <a href="https://ethgasstation.info/">https://ethgasstation.info/</a>
+        will work, check <a href="https://vapgasstation.info/">https://vapgasstation.info/</a>
         to find the Standard gasPrice that will work immediately.
       </li>
       <li>
@@ -143,10 +143,10 @@
     <p>5d. DATA: <abbr>0x3ccfd60b</abbr></p>
     <p>5e. Click Generate Tx and then click Send Tx</p>
     <p>
-      Now wait for the Ethereum Blockchain to work its magic and
-      you will have a bunch of ETH delivered to you :-) Remember
+      Now wait for the Vapory Blockchain to work its magic and
+      you will have a bunch of VAP delivered to you :-) Remember
       that a lot of people worked hard to make this possible, the
-      whole Ethereum network hard forked for this! Pay it forward to
+      whole Vapory network hard forked for this! Pay it forward to
       the people around you, if this was built on Bitcoin, this
       wouldn't have happened. ;-D
     </p>
@@ -159,7 +159,7 @@
       </li>
       <li>
         Go to
-        <a href="https://www.myetherwallet.com/#send-transaction">https://www.myetherwallet.com/#send-transaction</a>
+        <a href="https://www.myvaporwallet.com/#send-transaction">https://www.myvaporwallet.com/#send-transaction</a>
         (the current version)
       </li>
       <li>
@@ -229,14 +229,14 @@
 
     <h3>Old Instructions (probably doesn't work anymore)</h3>
 
-    <h5>You need to run the older version of MyEtherWallet (v3.3.7) to access the old DAO pages:</h5>
+    <h5>You need to run the older version of MyVaporWallet (v3.3.7) to access the old DAO pages:</h5>
 
     <ul>
-      <li><a href="https://github.com/kvhnuke/etherwallet/releases/tag/v3.3.7">MyEtherWallet (v3.3.7)</a></li>
+      <li><a href="https://github.com/kvhnuke/vaporwallet/releases/tag/v3.3.7">MyVaporWallet (v3.3.7)</a></li>
       <li>Click on <abbr>dist-v3.3.7.zip</abbr></li>
       <li>Unzip it</li>
       <li>Double-click <abbr>index.html</abbr></li>
-      <li>MyEtherWallet is now running entirely on your computer</li>
+      <li>MyVaporWallet is now running entirely on your computer</li>
     </ul>
 
     <p>
@@ -250,7 +250,7 @@
       <li>Click the <strong>Withdraw DAO page</strong> in the footer</li>
       <li>You will see three tabs:
         <ul>
-          <li>1 for withdrawing ETH</li>
+          <li>1 for withdrawing VAP</li>
           <li>1 for withdrawing ETC</li>
           <li>1 for withdrawing your ExtraBalance</li>
         </ul>
@@ -259,28 +259,28 @@
       <li>Done!</li>
     </ul>
 
-    <p><strong>Note: You will need minimum 0.01 ETH and 0.01 ETC in order to cover the cost of gas necessary to process the withdrawals.</strong></p>
+    <p><strong>Note: You will need minimum 0.01 VAP and 0.01 ETC in order to cover the cost of gas necessary to process the withdrawals.</strong></p>
 
     <p>
       <em>
-        Etherscan.io was kind enough to host this older version of
-        MyEtherWallet on their site for 1.5 years. Thank you etherscan!
-        <a href="https://etherscan.io/myetherwallet/">https://etherscan.io/myetherwallet/</a>
+        Vaporscan.com was kind enough to host this older version of
+        MyVaporWallet on their site for 1.5 years. Thank you vaporscan!
+        <a href="https://vaporscan.com/myvaporwallet/">https://vaporscan.com/myvaporwallet/</a>
       </em>
     </p>
 
     <p class="col">
-      <a 
-        href="https://github.com/MyEtherWallet/knowledge-base/blob/master/src/content/faq/withdrawing-dao-tokens.md" 
-        target="_blank" 
+      <a
+        href="https://github.com/MyVaporWallet/knowledge-base/blob/master/src/content/faq/withdrawing-dao-tokens.md"
+        target="_blank"
         rel="noopener noreferrer">
         Found a typo? Want to improve this article? <br> It's easy!
       </a>
     </p>
     <p class="col">
-      <a 
-        href="https://kb.myetherwallet.com/diving-deeper/how-to-submit-pull-request.html" 
-        target="_blank" 
+      <a
+        href="https://kb.myvaporwallet.com/diving-deeper/how-to-submit-pull-request.html"
+        target="_blank"
         rel="noopener noreferrer">
         Don't know how to submit a pull request? <br> It's also easy!
       </a>

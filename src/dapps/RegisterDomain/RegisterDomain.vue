@@ -35,10 +35,10 @@
 import BackButton from '@/layouts/InterfaceLayout/components/BackButton';
 import RegistrarAbi from '@/helpers/registrarAbi';
 import bip39 from 'bip39';
-import * as unit from 'ethjs-unit';
-import * as nameHashPckg from 'eth-ens-namehash';
+import * as unit from 'vapjs-unit';
+import * as nameHashPckg from 'vap-vns-namehash';
 
-const ETH_TLD = '.eth';
+const VAP_TLD = '.vap';
 
 export default {
   components: {
@@ -89,15 +89,15 @@ export default {
       this.step = 1;
       this.contractInitiated = false;
       this.registrarAddress = await this.getRegistrarAddress();
-      this.auctionRegistrarContract = new this.$store.state.web3.eth.Contract(
+      this.auctionRegistrarContract = new this.$store.state.web3.vap.Contract(
         RegistrarAbi,
         this.registrarAddress
       );
       this.contractInitiated = true;
     },
     async getRegistrarAddress() {
-      const registrarAddress = await this.$store.state.ens.owner(
-        ETH_TLD.replace('.', '')
+      const registrarAddress = await this.$store.state.vns.owner(
+        VAP_TLD.replace('.', '')
       );
       return registrarAddress;
     },
@@ -120,7 +120,7 @@ export default {
     },
     processResult(res) {
       this.auctionDateEnd = res[2] * 1000;
-      this.highestBidder = unit.fromWei(res[4], 'ether').toString();
+      this.highestBidder = unit.fromWei(res[4], 'vapor').toString();
       switch (res[0]) {
         case '0':
           this.generateKeyPhrase();
@@ -156,20 +156,20 @@ export default {
       let owner;
       let resolverAddress;
       try {
-        owner = await this.$store.state.ens.owner(this.domainName + ETH_TLD);
+        owner = await this.$store.state.vns.owner(this.domainName + VAP_TLD);
       } catch (e) {
         owner = '0x';
       }
 
       try {
-        resolverAddress = await this.$store.state.ens
-          .resolver(this.domainName + ETH_TLD)
+        resolverAddress = await this.$store.state.vns
+          .resolver(this.domainName + VAP_TLD)
           .resolverAddress();
       } catch (e) {
         resolverAddress = '0x';
       }
 
-      this.nameHash = nameHashPckg.hash(this.domainName + ETH_TLD);
+      this.nameHash = nameHashPckg.hash(this.domainName + VAP_TLD);
 
       this.deedOwner = deedOwner;
       this.owner = owner;
@@ -186,7 +186,7 @@ export default {
         .shaBid(
           domainName,
           address,
-          utils.toWei(this.bidAmount.toString(), 'ether'),
+          utils.toWei(this.bidAmount.toString(), 'vapor'),
           utils.sha3(this.secretPhrase)
         )
         .call();
@@ -205,7 +205,7 @@ export default {
         contractReference = this.auctionRegistrarContract.methods.unsealBid(
           domainName,
           address,
-          utils.toWei(this.bidAmount.toString(), 'ether'),
+          utils.toWei(this.bidAmount.toString(), 'vapor'),
           utils.sha3(this.secretPhrase)
         );
       }
@@ -215,7 +215,7 @@ export default {
       const revealDate = date.setDate(date.getDate() - 2);
       const raw = {
         from: address,
-        value: unit.toWei(this.bidMask, 'ether').toString(),
+        value: unit.toWei(this.bidMask, 'vapor').toString(),
         to: this.registrarAddress,
         data: contractReference.encodeABI(),
         name: this.domainName,

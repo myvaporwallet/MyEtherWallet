@@ -14,7 +14,7 @@
           type="text"
           name=""
           placeholder="Please Enter at Least 7 Characters" >
-        <span>.eth</span>
+        <span>.vap</span>
       </div>
       <p
         v-show="localDomainName.length < 7 && localDomainName !== ''"
@@ -71,9 +71,9 @@
         <h4 class="title">{{ $t('interface.allSubDomains') }}</h4>
         <ul>
           <li>
-            <p>myetherwallet2018.etherbase.eth</p>
+            <p>myvaporwallet2018.vaporbase.vap</p>
             <div class="buy-button-container">
-              <p>0 ETH</p>
+              <p>0 VAP</p>
               <div
                 class="buy-button very-small-circle-button-green-border"
                 @click="domainBuyButtonClick">
@@ -82,9 +82,9 @@
             </div>
           </li>
           <li>
-            <p>myetherwallet2018.etherbase.eth</p>
+            <p>myvaporwallet2018.vaporbase.vap</p>
             <div class="buy-button-container">
-              <p>0 ETH</p>
+              <p>0 VAP</p>
               <div
                 class="buy-button very-small-circle-button-green-border very-small-circle-button-green-filled"
                 @click="domainBuyButtonClick">
@@ -93,9 +93,9 @@
             </div>
           </li>
           <li>
-            <p>myetherwallet2018.etherbase.eth</p>
+            <p>myvaporwallet2018.vaporbase.vap</p>
             <div class="buy-button-container">
-              <p>0 ETH</p>
+              <p>0 VAP</p>
               <div
                 class="buy-button very-small-circle-button-green-border"
                 @click="domainBuyButtonClick">
@@ -104,9 +104,9 @@
             </div>
           </li>
           <li>
-            <p>myetherwallet2018.etherbase.eth</p>
+            <p>myvaporwallet2018.vaporbase.vap</p>
             <div class="buy-button-container">
-              <p>0 ETH</p>
+              <p>0 VAP</p>
               <div
                 class="buy-button very-small-circle-button-green-border"
                 @click="domainBuyButtonClick">
@@ -115,9 +115,9 @@
             </div>
           </li>
           <li>
-            <p>myetherwallet2018.etherbase.eth</p>
+            <p>myvaporwallet2018.vaporbase.vap</p>
             <div class="buy-button-container">
-              <p>0 ETH</p>
+              <p>0 VAP</p>
               <div
                 class="buy-button very-small-circle-button-green-border"
                 @click="domainBuyButtonClick">
@@ -126,9 +126,9 @@
             </div>
           </li>
           <li>
-            <p>myetherwallet2018.etherbase.eth</p>
+            <p>myvaporwallet2018.vaporbase.vap</p>
             <div class="buy-button-container">
-              <p>0 ETH</p>
+              <p>0 VAP</p>
               <div
                 class="buy-button very-small-circle-button-green-border"
                 @click="domainBuyButtonClick">
@@ -137,9 +137,9 @@
             </div>
           </li>
           <li>
-            <p>myetherwallet2018.etherbase.eth</p>
+            <p>myvaporwallet2018.vaporbase.vap</p>
             <div class="buy-button-container">
-              <p>0 ETH</p>
+              <p>0 VAP</p>
               <div
                 class="buy-button very-small-circle-button-green-border"
                 @click="domainBuyButtonClick">
@@ -207,5 +207,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'InitialENSStateContainer.scss';
+@import 'InitialVNSStateContainer.scss';
 </style>

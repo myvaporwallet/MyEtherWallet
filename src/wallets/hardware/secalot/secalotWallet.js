@@ -1,10 +1,10 @@
-import EthereumjsTx from 'ethereumjs-tx';
-import * as ethUtil from 'ethereumjs-util';
+import VaporyjsTx from 'vaporyjs-tx';
+import * as vapUtil from 'vaporyjs-util';
 import * as HDKey from 'hdkey';
 import HardwareWalletInterface from '../hardwareWallet-interface';
 import { getDerivationPath, paths } from './deterministicWalletPath';
 import { Misc } from '@/helpers';
-import SecalotEth from './secalotEth';
+import SecalotVap from './secalotVap';
 import SecalotUsb from './secalotUsb';
 import { u2f } from '../utils/u2f-api';
 
@@ -81,7 +81,7 @@ export default class SecalotWallet extends HardwareWalletInterface {
 
   getAddressString() {
     if (this.wallet) {
-      return ethUtil.toChecksumAddress(this.getAddress());
+      return vapUtil.toChecksumAddress(this.getAddress());
     }
     return null;
   }
@@ -105,7 +105,7 @@ export default class SecalotWallet extends HardwareWalletInterface {
 
   signMessage(msgData) {
     const thisMessage = msgData.data ? msgData.data : msgData;
-    const app = new SecalotEth(this.transport);
+    const app = new SecalotVap(this.transport);
     return new Promise((resolve, reject) => {
       app.signMessage(this.path, thisMessage, function(res, err) {
         if (res === undefined) reject(err);
@@ -139,7 +139,7 @@ export default class SecalotWallet extends HardwareWalletInterface {
     typeof secalotSecret === 'string' ? Number(secalotSecret) : secalotSecret;
     return new Promise(resolve => {
       this.transport = new SecalotUsb();
-      const app = new SecalotEth(this.transport, secalotSecret);
+      const app = new SecalotVap(this.transport, secalotSecret);
       const path = this.path;
       app.getAddress(path, (result, error) => {
         resolve(this.secalotCallback(result, error));
@@ -249,12 +249,12 @@ export default class SecalotWallet extends HardwareWalletInterface {
   }
 
   decimalToHex(dec) {
-    return new ethUtil.BN(dec).toString(16);
+    return new vapUtil.BN(dec).toString(16);
   }
 
   signTxSecalot(rawTx) {
-    const app = new SecalotEth(this.transport);
-    const tx = new EthereumjsTx(rawTx);
+    const app = new SecalotVap(this.transport);
+    const tx = new VaporyjsTx(rawTx);
 
     return new Promise((resolve, reject) => {
       app.signTransaction(this.path, tx, (res, err) => {
@@ -266,7 +266,7 @@ export default class SecalotWallet extends HardwareWalletInterface {
         rawTx.v = this.sanitizeHex(res['v']);
         rawTx.r = this.sanitizeHex(res['r']);
         rawTx.s = this.sanitizeHex(res['s']);
-        const eTx_ = new EthereumjsTx(rawTx);
+        const eTx_ = new VaporyjsTx(rawTx);
         rawTx.rawTx = JSON.stringify(rawTx);
         rawTx.rawTransaction = this.sanitizeHex(
           eTx_.serialize().toString('hex')
@@ -295,8 +295,8 @@ export default class SecalotWallet extends HardwareWalletInterface {
 
   _getAddressForWallet(wallet) {
     if (typeof wallet.pubKey === 'undefined') {
-      return '0x' + ethUtil.privateToAddress(wallet.privKey).toString('hex');
+      return '0x' + vapUtil.privateToAddress(wallet.privKey).toString('hex');
     }
-    return '0x' + ethUtil.publicToAddress(wallet.pubKey, true).toString('hex');
+    return '0x' + vapUtil.publicToAddress(wallet.pubKey, true).toString('hex');
   }
 }

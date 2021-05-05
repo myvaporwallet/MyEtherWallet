@@ -1,7 +1,7 @@
 import tokens from '@/tokens/tokens-ath.json';
 import contracts from '@/contracts/contract-abi-ath.json';
 import ath from '@/assets/images/icons/network.svg';
-// import { EthAbi } from '../ensAbis';
+// import { VapAbi } from '../vnsAbis';
 
 export default {
   name: 'ATH',
@@ -12,7 +12,7 @@ export default {
   chainID: 1620,
   tokens: tokens,
   contracts: contracts,
-  ensResolver: '',
-  ensAbi: '',
+  vnsResolver: '',
+  vnsAbi: '',
   icon: ath
 };

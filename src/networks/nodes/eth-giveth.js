@@ -1,8 +1,8 @@
-import { ETH } from '../types';
+import { VAP } from '../types';
 export default {
-  type: ETH,
-  service: 'giveth.io',
-  url: 'https://mew.giveth.io',
+  type: VAP,
+  service: 'givvap.io',
+  url: 'https://mew.givvap.io',
   port: 443,
   auth: false,
   username: '',

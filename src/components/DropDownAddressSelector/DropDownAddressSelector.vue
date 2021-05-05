@@ -55,7 +55,7 @@
 
 <script>
 import Blockie from '@/components/Blockie';
-import web3 from 'web3';
+import web3 from '@vapory/web3';
 
 export default {
   components: {

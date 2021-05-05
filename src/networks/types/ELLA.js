@@ -1,7 +1,7 @@
 import tokens from '@/tokens/tokens-ella.json';
 import contracts from '@/contracts/contract-abi-ella.json';
 import ella from '@/assets/images/networks/ella.svg';
-// import { EthAbi } from '../ensAbis';
+// import { VapAbi } from '../vnsAbis';
 
 export default {
   name: 'ELLA',
@@ -12,7 +12,7 @@ export default {
   chainID: 64,
   tokens: tokens,
   contracts: contracts,
-  ensResolver: '',
-  ensAbi: '',
+  vnsResolver: '',
+  vnsAbi: '',
   icon: ella
 };

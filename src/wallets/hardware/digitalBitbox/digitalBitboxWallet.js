@@ -1,11 +1,11 @@
-import EthereumjsTx from 'ethereumjs-tx';
-import * as ethUtil from 'ethereumjs-util';
+import VaporyjsTx from 'vaporyjs-tx';
+import * as vapUtil from 'vaporyjs-util';
 import * as HDKey from 'hdkey';
 import HardwareWalletInterface from '../hardwareWallet-interface';
 import { getDerivationPath, paths } from './deterministicWalletPaths';
 
 import { DigitalBitboxUsb } from './digitalBitboxUsb';
-import { DigitalBitboxEth } from './digitalBitboxEth';
+import { DigitalBitboxVap } from './digitalBitboxVap';
 import { u2f } from '../utils/u2f-api';
 
 export default class DigitalBitboxWallet extends HardwareWalletInterface {
@@ -76,7 +76,7 @@ export default class DigitalBitboxWallet extends HardwareWalletInterface {
 
   // ============== (End) Expected Utility methods ======================
 
-  // ============== (Start) Implementation of required EthereumJs-wallet interface methods =========
+  // ============== (Start) Implementation of required VaporyJs-wallet interface methods =========
   getAddress() {
     if (this.wallet) {
       return this.wallet.address;
@@ -86,12 +86,12 @@ export default class DigitalBitboxWallet extends HardwareWalletInterface {
 
   getAddressString() {
     if (this.wallet) {
-      return ethUtil.toChecksumAddress(this.getAddress());
+      return vapUtil.toChecksumAddress(this.getAddress());
     }
     return null;
   }
 
-  // ============== (End) Implementation of required EthereumJs-wallet interface methods ===========
+  // ============== (End) Implementation of required VaporyJs-wallet interface methods ===========
 
   // ============== (Start) Implementation of wallet usage methods ======================
   getAccounts() {
@@ -145,7 +145,7 @@ export default class DigitalBitboxWallet extends HardwareWalletInterface {
   unlockBitbox(digitalBitboxSecret) {
     return new Promise(resolve => {
       this.transport = new DigitalBitboxUsb();
-      const app = new DigitalBitboxEth(this.transport, digitalBitboxSecret);
+      const app = new DigitalBitboxVap(this.transport, digitalBitboxSecret);
       const path = this.path;
       app.getAddress(path, (result, error) => {
         resolve(this.digitalBitboxCallback(result, error));
@@ -255,7 +255,7 @@ export default class DigitalBitboxWallet extends HardwareWalletInterface {
   }
 
   decimalToHex(dec) {
-    return new ethUtil.BN(dec).toString(16);
+    return new vapUtil.BN(dec).toString(16);
   }
 
   signTxDigitalBitbox(rawTx) {
@@ -270,15 +270,15 @@ export default class DigitalBitboxWallet extends HardwareWalletInterface {
         rawTx.v = this.sanitizeHex(result['v']);
         rawTx.r = this.sanitizeHex(result['r']);
         rawTx.s = this.sanitizeHex(result['s']);
-        const eTx_ = new EthereumjsTx(rawTx);
+        const eTx_ = new VaporyjsTx(rawTx);
         rawTx.rawTx = JSON.stringify(rawTx);
         rawTx.signedTx = this.sanitizeHex(eTx_.serialize().toString('hex'));
         rawTx.isError = false;
         resolve(rawTx);
       };
       // uiFuncs.notifier.info("Touch the LED for 3 seconds to sign the transaction. Or tap the LED to cancel.");
-      const app = new DigitalBitboxEth(this.transport, '');
-      const tx = new EthereumjsTx(rawTx);
+      const app = new DigitalBitboxVap(this.transport, '');
+      const tx = new VaporyjsTx(rawTx);
       app.signTransaction(rawTx.path, tx, localCallback);
     });
   }
@@ -301,9 +301,9 @@ export default class DigitalBitboxWallet extends HardwareWalletInterface {
 
   _getAddressForWallet(wallet) {
     if (typeof wallet.pubKey === 'undefined') {
-      return '0x' + ethUtil.privateToAddress(wallet.privKey).toString('hex');
+      return '0x' + vapUtil.privateToAddress(wallet.privKey).toString('hex');
     }
-    return '0x' + ethUtil.publicToAddress(wallet.pubKey, true).toString('hex');
+    return '0x' + vapUtil.publicToAddress(wallet.pubKey, true).toString('hex');
   }
 
   // (End) Internal utility methods

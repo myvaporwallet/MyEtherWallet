@@ -7,7 +7,7 @@ export default class HardwareWalletInterface {
     this.defaultAccountsOffset = 0;
   }
 
-  // ============== (Start) EthereumJs-wallet interface methods ======================
+  // ============== (Start) VaporyJs-wallet interface methods ======================
   getPrivateKey() {
     return null;
   }
@@ -34,7 +34,7 @@ export default class HardwareWalletInterface {
     throw new Error('getAddressString Not Implemented');
   }
 
-  // ============== (End) EthereumJs-wallet interface methods ======================
+  // ============== (End) VaporyJs-wallet interface methods ======================
 
   // ============== (Start) Utility methods ======================
   // Implementation required

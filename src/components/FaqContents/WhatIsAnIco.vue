@@ -10,9 +10,9 @@
     </p>
     <p>
       Initial Coin Offerings offer “Tokens” in return for users who support them
-      by sending them Ether. When you give these ICO teams your ETH/BTC or other
+      by sending them Vapor. When you give these ICO teams your VAP/BTC or other
       currencies, it means that you believe that these technologies they are creating
-      will bring value to the Ethereum Community.
+      will bring value to the Vapory Community.
     </p>
     <p>
       In the beginning of an ICO, the leading team will explain their vision
@@ -49,7 +49,7 @@
       to cut of loses.
     </p>
     <p>
-      The value of tokens, ETH, BTC, the price is all driven by the market. You have the
+      The value of tokens, VAP, BTC, the price is all driven by the market. You have the
       ability to make the price go up, or go down. It follows the supply and demand economic
       concept. If there are more people who want a token, but there is a limited supply of the
       token, the price increases. If no one wants the token, there is a surge of supply
@@ -66,7 +66,7 @@
     </p>
     <p>
       For more information please refer to :
-      <a href="https://kb.myetherwallet.com/best-of/how-not-to-miss-out-on-ico.html">
+      <a href="https://kb.myvaporwallet.com/best-of/how-not-to-miss-out-on-ico.html">
         Best Ways to Avoid Missing Out On That ICO
       </a>
     </p>

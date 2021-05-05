@@ -39,14 +39,14 @@ export default {
         {
           name: 'kybernetwork',
           image: KyberNetwork,
-          swapValue1: '1 BTC = 21.43572 ETH',
+          swapValue1: '1 BTC = 21.43572 VAP',
           swapValue2: '1 BTC = 493.34285 REP'
         },
         {
           name: 'bity',
           image: Bity,
-          swapValue1: '1 ETH = 0.35636 BTC',
-          swapValue2: '1 ETH = 16.34285 REP'
+          swapValue1: '1 VAP = 0.35636 BTC',
+          swapValue2: '1 VAP = 16.34285 REP'
         }
       ]
     };

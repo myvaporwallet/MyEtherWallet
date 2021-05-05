@@ -1,5 +1,5 @@
-import EthereumjsTx from 'ethereumjs-tx';
-import * as ethUtil from 'ethereumjs-util';
+import VaporyjsTx from 'vaporyjs-tx';
+import * as vapUtil from 'vaporyjs-util';
 import * as HDKey from 'hdkey';
 import HardwareWalletInterface from './hardwareWallet-interface';
 import { getDerivationPath, paths } from './deterministicWalletPaths';
@@ -76,7 +76,7 @@ export default class MnemonicWallet extends HardwareWalletInterface {
 
   // ============== (End) Expected Utility methods ======================
 
-  // ============== (Start) Implementation of required EthereumJs-wallet interface methods =========
+  // ============== (Start) Implementation of required VaporyJs-wallet interface methods =========
   getAddress() {
     if (this.wallet) {
       return this.wallet.address;
@@ -86,12 +86,12 @@ export default class MnemonicWallet extends HardwareWalletInterface {
 
   getAddressString() {
     if (this.wallet) {
-      return ethUtil.toChecksumAddress(this.getAddress());
+      return vapUtil.toChecksumAddress(this.getAddress());
     }
     return null;
   }
 
-  // ============== (End) Implementation of required EthereumJs-wallet interface methods ===========
+  // ============== (End) Implementation of required VaporyJs-wallet interface methods ===========
 
   // ============== (Start) Implementation of wallet usage methods ======================
   async getAccounts() {
@@ -239,7 +239,7 @@ export default class MnemonicWallet extends HardwareWalletInterface {
         chainId: rawTx.chainId
       };
       txData.data = txData.data === '' ? '0x' : txData.data;
-      const tx = new EthereumjsTx(txData);
+      const tx = new VaporyjsTx(txData);
       tx.sign(Buffer.from(this.wallet.privKey, 'hex'));
       txData.rawTx = JSON.stringify(txData);
       return {
@@ -262,8 +262,8 @@ export default class MnemonicWallet extends HardwareWalletInterface {
           'no wallet present. wallet may not have been decrypted'
         );
 
-      const msg = ethUtil.hashPersonalMessage(ethUtil.toBuffer(stringMessage));
-      const signed = ethUtil.ecsign(msg, this.wallet.privKey);
+      const msg = vapUtil.hashPersonalMessage(vapUtil.toBuffer(stringMessage));
+      const signed = vapUtil.ecsign(msg, this.wallet.privKey);
       const combined = Buffer.concat([
         Buffer.from(signed.r),
         Buffer.from(signed.s),
@@ -280,9 +280,9 @@ export default class MnemonicWallet extends HardwareWalletInterface {
   // (Start) Internal utility methods
   _getAddressForWallet(wallet) {
     if (typeof wallet.pubKey === 'undefined') {
-      return '0x' + ethUtil.privateToAddress(wallet.privKey).toString('hex');
+      return '0x' + vapUtil.privateToAddress(wallet.privKey).toString('hex');
     }
-    return '0x' + ethUtil.publicToAddress(wallet.pubKey, true).toString('hex');
+    return '0x' + vapUtil.publicToAddress(wallet.pubKey, true).toString('hex');
   }
 
   // (End) Internal utility methods

@@ -1,6 +1,6 @@
-import MewConnect from '@myetherwallet/mewconnect-web-client';
-import * as ethUtil from 'ethereumjs-util';
-import EthereumjsTx from 'ethereumjs-tx';
+import MewConnect from '@myvaporwallet/mewconnect-web-client';
+import * as vapUtil from 'vaporyjs-util';
+import VaporyjsTx from 'vaporyjs-tx';
 
 export default class MewConnectWallet {
   constructor(options) {
@@ -47,7 +47,7 @@ export default class MewConnectWallet {
     this.mewConnect.sendRtcMessage('address', '');
   }
 
-  // ============== (Start) EthereumJs-wallet interface methods ======================
+  // ============== (Start) VaporyJs-wallet interface methods ======================
   getAddress() {
     if (this.wallet) {
       return this.wallet.address;
@@ -57,12 +57,12 @@ export default class MewConnectWallet {
 
   getAddressString() {
     if (this.wallet) {
-      return ethUtil.toChecksumAddress(this.getAddress());
+      return vapUtil.toChecksumAddress(this.getAddress());
     }
     return null;
   }
 
-  // ============== (End) EthereumJs-wallet interface methods ======================
+  // ============== (End) VaporyJs-wallet interface methods ======================
 
   // ============== (Start) Utility methods ======================
   get isHardware() {
@@ -93,7 +93,7 @@ export default class MewConnectWallet {
       try {
         const thisMessage = msgData.data ? msgData.data : msgData;
         this.mewConnect.sendRtcMessage('signMessage', {
-          hash: ethUtil
+          hash: vapUtil
             .hashPersonalMessage(Buffer.from(thisMessage))
             .toString('hex'),
           text: thisMessage
@@ -120,7 +120,7 @@ export default class MewConnectWallet {
       this.mewConnect.sendRtcMessage('signTx', JSON.stringify(txData));
       this.mewConnect.on('signTx', data => {
         const rawTransaction = `0x${data}`;
-        const tx = new EthereumjsTx(rawTransaction);
+        const tx = new VaporyjsTx(rawTransaction);
         resolve({
           rawTx: JSON.stringify(txData),
           messageHash: tx.hash(),

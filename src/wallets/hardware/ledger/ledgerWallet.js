@@ -1,8 +1,8 @@
-import EthereumTx from 'ethereumjs-tx';
-import Ledger from '@ledgerhq/hw-app-eth';
+import VaporyTx from 'vaporyjs-tx';
+import Ledger from 'hw-app-vap';
 import u2fTransport from '@ledgerhq/hw-transport-u2f';
 import HardwareWalletInterface from '../hardwareWallet-interface';
-import * as ethUtil from 'ethereumjs-util';
+import * as vapUtil from 'vaporyjs-util';
 import { paths, getDerivationPath } from './deterministicWalletPaths';
 
 export default class LedgerWallet extends HardwareWalletInterface {
@@ -100,16 +100,16 @@ export default class LedgerWallet extends HardwareWalletInterface {
 
   // ============== (End) Expected Utility methods ======================
 
-  // ============== (Start) Implementation of required EthereumJs-wallet interface methods =========
+  // ============== (Start) Implementation of required VaporyJs-wallet interface methods =========
   getAddress() {
     return this.wallet.address;
   }
 
   getAddressString() {
-    return ethUtil.toChecksumAddress(this.getAddress());
+    return vapUtil.toChecksumAddress(this.getAddress());
   }
 
-  // ============== (End) Implementation of required EthereumJs-wallet interface methods ===========
+  // ============== (End) Implementation of required VaporyJs-wallet interface methods ===========
 
   // ============== (Start) Implementation of wallet usage methods ======================
   getAccounts() {
@@ -203,13 +203,13 @@ export default class LedgerWallet extends HardwareWalletInterface {
     try {
       const accountsOffset = _accountsOffset || this.accountsOffset;
       const accountsLength = _accountsLength || this.accountsLength;
-      const eth = new Ledger(transport);
+      const vap = new Ledger(transport);
       const addresses = {};
       for (let i = accountsOffset; i < accountsOffset + accountsLength; i++) {
         const path =
           this.pathComponents.basePath +
           (this.pathComponents.index + i).toString();
-        const address = await eth.getAddress(path, this.askConfirm, false);
+        const address = await vap.getAddress(path, this.askConfirm, false);
         addresses[i] = address.address;
         this.addressToPathMap[address.address.toLowerCase()] = path;
       }
@@ -229,8 +229,8 @@ export default class LedgerWallet extends HardwareWalletInterface {
   async getAppConfig() {
     const transport = await this.getTransport();
     try {
-      const eth = new Ledger(transport);
-      const appConfig = await eth.getAppConfiguration();
+      const vap = new Ledger(transport);
+      const appConfig = await vap.getAppConfiguration();
       return appConfig;
     } catch (e) {
       throw e;
@@ -264,8 +264,8 @@ export default class LedgerWallet extends HardwareWalletInterface {
     const transport = await this.getTransport();
     try {
       const thisMessage = msgData.data ? msgData.data : msgData;
-      const eth = new Ledger(transport);
-      const result = await eth.signPersonalMessage(
+      const vap = new Ledger(transport);
+      const result = await vap.signPersonalMessage(
         path,
         Buffer.from(thisMessage).toString('hex')
       );
@@ -291,8 +291,8 @@ export default class LedgerWallet extends HardwareWalletInterface {
     const path = await this.checkIfKnownAddress(txData);
     const transport = await this.getTransport();
     try {
-      const eth = new Ledger(transport);
-      const tx = new EthereumTx(txData);
+      const vap = new Ledger(transport);
+      const tx = new VaporyTx(txData);
       this.networkId = txData.chainId || this.networkId;
 
       // Set the EIP155 bits
@@ -301,7 +301,7 @@ export default class LedgerWallet extends HardwareWalletInterface {
       tx.raw[8] = Buffer.from([]); // s
 
       // Pass hex-rlp to ledger for signing
-      const result = await eth.signTransaction(
+      const result = await vap.signTransaction(
         path,
         tx.serialize().toString('hex')
       );
